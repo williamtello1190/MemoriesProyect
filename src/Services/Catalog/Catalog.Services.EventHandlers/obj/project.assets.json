@@ -1527,6 +1527,16 @@
         "runtime": {
           "bin/placeholder/Catalog.Persistence.Database.dll": {}
         }
+      },
+      "Service.Common.Collection/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        }
       }
     }
   },
@@ -5780,13 +5790,19 @@
       "type": "project",
       "path": "../Catalog.Persistence.Database/Catalog.Persistence.Database.csproj",
       "msbuildProject": "../Catalog.Persistence.Database/Catalog.Persistence.Database.csproj"
+    },
+    "Service.Common.Collection/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj",
+      "msbuildProject": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Catalog.Persistence.Database >= 1.0.0",
       "MediatR >= 9.0.0",
-      "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0"
+      "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0",
+      "Service.Common.Collection >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5823,6 +5839,9 @@
           "projectReferences": {
             "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Persistence.Database\\Catalog.Persistence.Database.csproj": {
               "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Persistence.Database\\Catalog.Persistence.Database.csproj"
+            },
+            "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj": {
+              "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj"
             }
           }
         }

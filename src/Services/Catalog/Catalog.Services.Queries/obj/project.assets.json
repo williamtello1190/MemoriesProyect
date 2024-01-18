@@ -1534,13 +1534,48 @@
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
           "MediatR": "9.0.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0"
+          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Service.Common.Collection": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Catalog.Services.EventHandlers.dll": {}
         },
         "runtime": {
           "bin/placeholder/Catalog.Services.EventHandlers.dll": {}
+        }
+      },
+      "Service.Common.Collection/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        }
+      },
+      "Service.Common.Mapping/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Service.Common.Mapping.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Mapping.dll": {}
+        }
+      },
+      "Service.Common.Paging/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.17",
+          "Service.Common.Collection": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.Common.Paging.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Paging.dll": {}
         }
       }
     }
@@ -5800,12 +5835,29 @@
       "type": "project",
       "path": "../Catalog.Services.EventHandlers/Catalog.Services.EventHandlers.csproj",
       "msbuildProject": "../Catalog.Services.EventHandlers/Catalog.Services.EventHandlers.csproj"
+    },
+    "Service.Common.Collection/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj",
+      "msbuildProject": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj"
+    },
+    "Service.Common.Mapping/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Mapping/Service.Common.Mapping.csproj",
+      "msbuildProject": "../../Common/Service.Common.Mapping/Service.Common.Mapping.csproj"
+    },
+    "Service.Common.Paging/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Paging/Service.Common.Paging.csproj",
+      "msbuildProject": "../../Common/Service.Common.Paging/Service.Common.Paging.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Catalog.Persistence.Database >= 1.0.0",
-      "Catalog.Services.EventHandlers >= 1.0.0"
+      "Catalog.Services.EventHandlers >= 1.0.0",
+      "Service.Common.Mapping >= 1.0.0",
+      "Service.Common.Paging >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5845,6 +5897,12 @@
             },
             "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Services.EventHandlers\\Catalog.Services.EventHandlers.csproj": {
               "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Services.EventHandlers\\Catalog.Services.EventHandlers.csproj"
+            },
+            "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Mapping\\Service.Common.Mapping.csproj": {
+              "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Mapping\\Service.Common.Mapping.csproj"
+            },
+            "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Paging\\Service.Common.Paging.csproj": {
+              "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Paging\\Service.Common.Paging.csproj"
             }
           }
         }

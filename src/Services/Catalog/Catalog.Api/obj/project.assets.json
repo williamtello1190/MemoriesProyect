@@ -2,6 +2,27 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "FreeSpire.Office/4.3.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.5.0",
+          "System.Text.Encoding.CodePages": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Spire.Doc.dll": {},
+          "lib/netstandard2.0/Spire.License.dll": {},
+          "lib/netstandard2.0/Spire.Pdf.dll": {},
+          "lib/netstandard2.0/Spire.Presentation.dll": {},
+          "lib/netstandard2.0/Spire.XLS.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Spire.Doc.dll": {},
+          "lib/netstandard2.0/Spire.License.dll": {},
+          "lib/netstandard2.0/Spire.Pdf.dll": {},
+          "lib/netstandard2.0/Spire.Presentation.dll": {},
+          "lib/netstandard2.0/Spire.XLS.dll": {}
+        }
+      },
       "MediatR/9.0.0": {
         "type": "package",
         "compile": {
@@ -365,7 +386,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.0": {
+      "Microsoft.NETCore.Platforms/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -415,10 +436,10 @@
           }
         }
       },
-      "Microsoft.Win32.SystemEvents/4.7.0": {
+      "Microsoft.Win32.SystemEvents/5.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "5.0.0"
         },
         "compile": {
           "ref/netstandard2.0/_._": {}
@@ -468,6 +489,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+        }
+      },
+      "QRCoder/1.4.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "5.0.3"
+        },
+        "compile": {
+          "lib/net5.0/QRCoder.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/QRCoder.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -729,17 +762,16 @@
           "ref/netstandard1.5/_._": {}
         }
       },
-      "System.Drawing.Common/4.7.0": {
+      "System.Drawing.Common/5.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "Microsoft.Win32.SystemEvents": "4.7.0"
+          "Microsoft.Win32.SystemEvents": "5.0.0"
         },
         "compile": {
-          "ref/netcoreapp3.0/_._": {}
+          "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
@@ -1388,7 +1420,7 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         },
         "compile": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
@@ -1608,7 +1640,8 @@
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
           "MediatR": "9.0.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0"
+          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Service.Common.Collection": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Catalog.Services.EventHandlers.dll": {}
@@ -1622,7 +1655,9 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
-          "Catalog.Services.EventHandlers": "1.0.0"
+          "Catalog.Services.EventHandlers": "1.0.0",
+          "Service.Common.Mapping": "1.0.0",
+          "Service.Common.Paging": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Catalog.Services.Queries.dll": {}
@@ -1630,10 +1665,126 @@
         "runtime": {
           "bin/placeholder/Catalog.Services.Queries.dll": {}
         }
+      },
+      "Service.Common.Collection/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Collection.dll": {}
+        }
+      },
+      "Service.Common.Mapping/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Service.Common.Mapping.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Mapping.dll": {}
+        }
+      },
+      "Service.Common.Paging/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.17",
+          "Service.Common.Collection": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.Common.Paging.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Paging.dll": {}
+        }
+      },
+      "Service.Common.Util/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Catalog.Services.Queries": "1.0.0",
+          "FreeSpire.Office": "4.3.1",
+          "QRCoder": "1.4.3",
+          "Service.Common.Collection": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.Common.Util.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.Common.Util.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "FreeSpire.Office/4.3.1": {
+      "sha512": "Zt8CoubJ7HFzZ9cKoowvAFSNCB/znUQ91rorM3uzkd7rqAZyKDpmuA5SiwbWypamAIQ2DVPvUV6tRoJNsApBKw==",
+      "type": "package",
+      "path": "freespire.office/4.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "freespire.office.4.3.1.nupkg.sha512",
+        "freespire.office.nuspec",
+        "lib/net20/Spire.Barcode.dll",
+        "lib/net20/Spire.Barcode.xml",
+        "lib/net20/Spire.Common.dll",
+        "lib/net20/Spire.Common.xml",
+        "lib/net20/Spire.DataExport.ResourceMgr.dll",
+        "lib/net20/Spire.DataExport.ResourceMgr.xml",
+        "lib/net20/Spire.DataExport.dll",
+        "lib/net20/Spire.DataExport.xml",
+        "lib/net20/Spire.Doc.XML",
+        "lib/net20/Spire.Doc.dll",
+        "lib/net20/Spire.DocViewer.Forms.dll",
+        "lib/net20/Spire.DocViewer.Forms.xml",
+        "lib/net20/Spire.License.dll",
+        "lib/net20/Spire.License.xml",
+        "lib/net20/Spire.Pdf.XML",
+        "lib/net20/Spire.Pdf.dll",
+        "lib/net20/Spire.PdfViewer.Forms.dll",
+        "lib/net20/Spire.PdfViewer.Forms.xml",
+        "lib/net20/Spire.Presentation.dll",
+        "lib/net20/Spire.Presentation.xml",
+        "lib/net20/Spire.XLS.XML",
+        "lib/net20/Spire.XLS.dll",
+        "lib/net40/Spire.Barcode.dll",
+        "lib/net40/Spire.Barcode.xml",
+        "lib/net40/Spire.Common.dll",
+        "lib/net40/Spire.Common.xml",
+        "lib/net40/Spire.DataExport.ResourceMgr.dll",
+        "lib/net40/Spire.DataExport.ResourceMgr.xml",
+        "lib/net40/Spire.DataExport.dll",
+        "lib/net40/Spire.DataExport.xml",
+        "lib/net40/Spire.Doc.XML",
+        "lib/net40/Spire.Doc.dll",
+        "lib/net40/Spire.DocViewer.Forms.dll",
+        "lib/net40/Spire.DocViewer.Forms.xml",
+        "lib/net40/Spire.License.dll",
+        "lib/net40/Spire.License.xml",
+        "lib/net40/Spire.Pdf.XML",
+        "lib/net40/Spire.Pdf.dll",
+        "lib/net40/Spire.PdfViewer.Forms.dll",
+        "lib/net40/Spire.PdfViewer.Forms.xml",
+        "lib/net40/Spire.Presentation.dll",
+        "lib/net40/Spire.Presentation.xml",
+        "lib/net40/Spire.XLS.XML",
+        "lib/net40/Spire.XLS.dll",
+        "lib/netstandard2.0/Spire.Doc.dll",
+        "lib/netstandard2.0/Spire.Doc.xml",
+        "lib/netstandard2.0/Spire.License.dll",
+        "lib/netstandard2.0/Spire.License.xml",
+        "lib/netstandard2.0/Spire.Pdf.dll",
+        "lib/netstandard2.0/Spire.Pdf.xml",
+        "lib/netstandard2.0/Spire.Presentation.dll",
+        "lib/netstandard2.0/Spire.Presentation.xml",
+        "lib/netstandard2.0/Spire.XLS.dll",
+        "lib/netstandard2.0/Spire.XLS.xml",
+        "license.txt"
+      ]
+    },
     "MediatR/9.0.0": {
       "sha512": "8b3UYNxegHVYcJMG2zH8wn+YqxLvXG+eMfj0cMCq/jTW72p6O3PCKMkrIv0mqyxdW7bA4gblsocw7n+/9Akg5g==",
       "type": "package",
@@ -2246,17 +2397,18 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.NETCore.Platforms/3.1.0": {
-      "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "sha512": "VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/3.1.0",
+      "path": "microsoft.netcore.platforms/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.5.0.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -2342,25 +2494,24 @@
         "version.txt"
       ]
     },
-    "Microsoft.Win32.SystemEvents/4.7.0": {
-      "sha512": "mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "sha512": "Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
       "type": "package",
-      "path": "microsoft.win32.systemevents/4.7.0",
+      "path": "microsoft.win32.systemevents/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/Microsoft.Win32.SystemEvents.dll",
         "lib/net461/Microsoft.Win32.SystemEvents.xml",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
-        "microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+        "microsoft.win32.systemevents.5.0.0.nupkg.sha512",
         "microsoft.win32.systemevents.nuspec",
         "ref/net461/Microsoft.Win32.SystemEvents.dll",
         "ref/net461/Microsoft.Win32.SystemEvents.xml",
-        "ref/net472/Microsoft.Win32.SystemEvents.dll",
-        "ref/net472/Microsoft.Win32.SystemEvents.xml",
         "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
         "ref/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
         "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
@@ -2396,6 +2547,27 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "QRCoder/1.4.3": {
+      "sha512": "fWuFqjm8GTlEb2GqBl3Hi8HZZeZQwBSHxvRPtPjyNbT82H0ff0JwavKRBmMaXCno1Av6McPC8aJzri0Mj2w9Jw==",
+      "type": "package",
+      "path": "qrcoder/1.4.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/QRCoder.dll",
+        "lib/net40/QRCoder.dll",
+        "lib/net5.0-windows7.0/QRCoder.dll",
+        "lib/net5.0/QRCoder.dll",
+        "lib/net6.0-windows7.0/QRCoder.dll",
+        "lib/net6.0/QRCoder.dll",
+        "lib/netstandard1.3/QRCoder.dll",
+        "lib/netstandard2.0/QRCoder.dll",
+        "nuget-icon.png",
+        "nuget-readme.md",
+        "qrcoder.1.4.3.nupkg.sha512",
+        "qrcoder.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -3222,18 +3394,21 @@
         "system.diagnostics.tracing.nuspec"
       ]
     },
-    "System.Drawing.Common/4.7.0": {
-      "sha512": "v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
+    "System.Drawing.Common/5.0.3": {
+      "sha512": "rEQZuslijqdsO0pkJn7LtGBaMc//YVA8de0meGihkg9oLPaN+w+/Pb5d71lgp0YjPoKgBKNMvdq0IPnoW4PEng==",
       "type": "package",
-      "path": "system.drawing.common/4.7.0",
+      "path": "system.drawing.common/5.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net461/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.xml",
         "lib/netstandard2.0/System.Drawing.Common.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
@@ -3255,7 +3430,7 @@
         "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
         "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
         "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
-        "system.drawing.common.4.7.0.nupkg.sha512",
+        "system.drawing.common.5.0.3.nupkg.sha512",
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6000,6 +6175,26 @@
       "type": "project",
       "path": "../Catalog.Services.Queries/Catalog.Services.Queries.csproj",
       "msbuildProject": "../Catalog.Services.Queries/Catalog.Services.Queries.csproj"
+    },
+    "Service.Common.Collection/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj",
+      "msbuildProject": "../../Common/Service.Common.Collection/Service.Common.Collection.csproj"
+    },
+    "Service.Common.Mapping/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Mapping/Service.Common.Mapping.csproj",
+      "msbuildProject": "../../Common/Service.Common.Mapping/Service.Common.Mapping.csproj"
+    },
+    "Service.Common.Paging/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Paging/Service.Common.Paging.csproj",
+      "msbuildProject": "../../Common/Service.Common.Paging/Service.Common.Paging.csproj"
+    },
+    "Service.Common.Util/1.0.0": {
+      "type": "project",
+      "path": "../../Common/Service.Common.Util/Service.Common.Util.csproj",
+      "msbuildProject": "../../Common/Service.Common.Util/Service.Common.Util.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6009,6 +6204,7 @@
       "Catalog.Services.Queries >= 1.0.0",
       "MediatR >= 9.0.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 9.0.0",
+      "Service.Common.Util >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6052,6 +6248,9 @@
             },
             "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Services.Queries\\Catalog.Services.Queries.csproj": {
               "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Catalog\\Catalog.Services.Queries\\Catalog.Services.Queries.csproj"
+            },
+            "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Util\\Service.Common.Util.csproj": {
+              "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Util\\Service.Common.Util.csproj"
             }
           }
         }

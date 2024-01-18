@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Service.Common.Util\Service.Common.Util.csproj" />
     <ProjectReference Include="..\Catalog.Persistence.Database\Catalog.Persistence.Database.csproj" />
     <ProjectReference Include="..\Catalog.Services.EventHandlers\Catalog.Services.EventHandlers.csproj" />
     <ProjectReference Include="..\Catalog.Services.Queries\Catalog.Services.Queries.csproj" />
