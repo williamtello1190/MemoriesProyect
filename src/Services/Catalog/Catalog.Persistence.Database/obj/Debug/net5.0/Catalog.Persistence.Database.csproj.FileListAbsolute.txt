@@ -1,0 +1,15 @@
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.deps.json
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Domain.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Domain.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.csproj.AssemblyReference.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.GeneratedMSBuildEditorConfig.editorconfig
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.AssemblyInfoInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.AssemblyInfo.cs
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.csproj.CoreCompileInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.csproj.CopyComplete
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\refint\Catalog.Persistence.Database.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\ref\Catalog.Persistence.Database.dll

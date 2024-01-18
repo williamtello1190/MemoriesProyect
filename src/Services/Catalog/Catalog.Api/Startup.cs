@@ -1,6 +1,8 @@
+using Catalog.Persistence.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Catalog.Api
@@ -25,12 +28,18 @@ namespace Catalog.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(opts =>
+                opts.UseSqlServer(Configuration.GetConnectionString("DefaultConecction"),
+                x => x.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
+                .MigrationsHistoryTable("__EFMigrationhistory", "Catalog"))
+            );
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.Api", Version = "v1" });
             });
+            services.AddMvc().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = new LowerCaseNamingPolicy());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +54,20 @@ namespace Catalog.Api
 
             app.UseRouting();
 
+            app.UseCors(options => options.WithOrigins("http://localhost:4200"));
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public class LowerCaseNamingPolicy : JsonNamingPolicy
+        {
+            public override string ConvertName(string name) =>
+                name.ToLower();
         }
     }
 }
