@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
+    <Folder Include="StoredProcedure\" />
   </ItemGroup>
 
   <ItemGroup>

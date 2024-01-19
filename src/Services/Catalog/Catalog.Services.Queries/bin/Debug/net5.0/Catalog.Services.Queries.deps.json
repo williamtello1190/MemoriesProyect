@@ -9,7 +9,9 @@
       "Catalog.Services.Queries/1.0.0": {
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
-          "Catalog.Services.EventHandlers": "1.0.0"
+          "Catalog.Services.EventHandlers": "1.0.0",
+          "Service.Common.Mapping": "1.0.0",
+          "Service.Common.Paging": "1.0.0"
         },
         "runtime": {
           "Catalog.Services.Queries.dll": {}
@@ -1078,10 +1080,30 @@
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
           "MediatR": "9.0.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0"
+          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Service.Common.Collection": "1.0.0"
         },
         "runtime": {
           "Catalog.Services.EventHandlers.dll": {}
+        }
+      },
+      "Service.Common.Collection/1.0.0": {
+        "runtime": {
+          "Service.Common.Collection.dll": {}
+        }
+      },
+      "Service.Common.Mapping/1.0.0": {
+        "runtime": {
+          "Service.Common.Mapping.dll": {}
+        }
+      },
+      "Service.Common.Paging/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.17",
+          "Service.Common.Collection": "1.0.0"
+        },
+        "runtime": {
+          "Service.Common.Paging.dll": {}
         }
       }
     }
@@ -1775,6 +1797,21 @@
       "sha512": ""
     },
     "Catalog.Services.EventHandlers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service.Common.Collection/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service.Common.Mapping/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service.Common.Paging/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

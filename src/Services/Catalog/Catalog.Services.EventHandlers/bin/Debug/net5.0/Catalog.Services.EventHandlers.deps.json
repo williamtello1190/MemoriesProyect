@@ -10,7 +10,8 @@
         "dependencies": {
           "Catalog.Persistence.Database": "1.0.0",
           "MediatR": "9.0.0",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0"
+          "MediatR.Extensions.Microsoft.DependencyInjection": "9.0.0",
+          "Service.Common.Collection": "1.0.0"
         },
         "runtime": {
           "Catalog.Services.EventHandlers.dll": {}
@@ -1074,6 +1075,11 @@
         "runtime": {
           "Catalog.Persistence.Database.dll": {}
         }
+      },
+      "Service.Common.Collection/1.0.0": {
+        "runtime": {
+          "Service.Common.Collection.dll": {}
+        }
       }
     }
   },
@@ -1761,6 +1767,11 @@
       "sha512": ""
     },
     "Catalog.Persistence.Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service.Common.Collection/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
