@@ -1,0 +1,15 @@
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.deps.json
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Models.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Models.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.csproj.AssemblyReference.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.GeneratedMSBuildEditorConfig.editorconfig
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.AssemblyInfoInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.AssemblyInfo.cs
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.csproj.CoreCompileInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.csproj.CopyComplete
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\refint\Api.Gateway.Proxies.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\ref\Api.Gateway.Proxies.dll

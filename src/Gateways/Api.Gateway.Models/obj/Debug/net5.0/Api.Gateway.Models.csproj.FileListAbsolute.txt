@@ -1,0 +1,12 @@
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\bin\Debug\net5.0\Api.Gateway.Models.deps.json
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\bin\Debug\net5.0\Api.Gateway.Models.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\bin\Debug\net5.0\Api.Gateway.Models.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.csproj.AssemblyReference.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.GeneratedMSBuildEditorConfig.editorconfig
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.AssemblyInfoInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.AssemblyInfo.cs
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.csproj.CoreCompileInputs.cache
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\refint\Api.Gateway.Models.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\Api.Gateway.Models.pdb
+F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Models\obj\Debug\net5.0\ref\Api.Gateway.Models.dll
