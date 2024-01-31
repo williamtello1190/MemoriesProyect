@@ -1,4 +1,5 @@
 using Catalog.Persistence.Database;
+using Catalog.Services.Queries.StoredProcedure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +47,8 @@ namespace Catalog.Api
                 x => x.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
                 .MigrationsHistoryTable("__EFMigrationhistory", "Catalog"))
             );
-
+            services.AddTransient<IGetMemoryPersonQueryService, GetMemoryPersonQueryService>();
+            services.AddTransient<IGetMemoryPersonDetailQueryService, GetMemoryPersonDetailQueryService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

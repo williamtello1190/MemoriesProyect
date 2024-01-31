@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Catalog.Domain.StoredProcedure;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,21 @@ namespace Catalog.Persistence.Database
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { 
+        }
+        public DbSet<MemoryPerson> MemoryPerson { get; set; }
+        public DbSet<MemoryPersonDetail> MemoryPersonDetail { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.HasDefaultSchema("Memories");
+            ModelConfig(builder);
+        }
+
+        public void ModelConfig(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MemoryPerson>().HasNoKey();
+            modelBuilder.Entity<MemoryPersonDetail>().HasNoKey();
         }
     }
 }
