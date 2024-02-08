@@ -8,9 +8,9 @@ namespace Catalog.Domain.StoredProcedure
 {
     public class MemoryPersonDetail
     {
-        public Int64 IdMemoryPersonDet { get; set; }
-        public Int64 IdMemoryPerson { get; set; }
-        public Int64 IdAttachment { get; set; }
+        public Int32 IdMemoryPersonDet { get; set; }
+        public Int32 IdMemoryPerson { get; set; }
+        public Int32 IdAttachment { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public string PhysicalName { get; set; }

@@ -14,7 +14,7 @@ namespace Catalog.Services.Queries.StoredProcedure
 {
     public interface IGetMemoryPersonDetailQueryService
     {
-        Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int64 MemoryPersonId);
+        Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int32 MemoryPersonId);
     }
     public class GetMemoryPersonDetailQueryService : IGetMemoryPersonDetailQueryService
     {
@@ -25,7 +25,7 @@ namespace Catalog.Services.Queries.StoredProcedure
             _context = context;
         }
 
-        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int64 MemoryPersonId)
+        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int32 MemoryPersonId)
         {
             SqlParameter pMemoryPersonId = new() { ParameterName = "@MemoryPersonId", SqlDbType = SqlDbType.Int, Value = MemoryPersonId };
             var collection = await _context.MemoryPersonDetail.FromSqlRaw("EXEC [dbo].[uspGetMemoryPersonDetail] @MemoryPersonId", pMemoryPersonId).ToListAsync();

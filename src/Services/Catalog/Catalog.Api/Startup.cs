@@ -1,5 +1,6 @@
 using Catalog.Persistence.Database;
 using Catalog.Services.Queries.StoredProcedure;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -43,10 +45,12 @@ namespace Catalog.Api
             });
 
             services.AddDbContext<ApplicationDbContext>(opts =>
-                opts.UseSqlServer(Configuration.GetConnectionString("DefaultConecction"),
+                opts.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 x => x.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
-                .MigrationsHistoryTable("__EFMigrationhistory", "Catalog"))
+                .MigrationsHistoryTable("__EFMigrationhistory", "Memories"))
             );
+
+            services.AddMediatR(Assembly.Load("Catalog.Services.EventHandlers"));
             services.AddTransient<IGetMemoryPersonQueryService, GetMemoryPersonQueryService>();
             services.AddTransient<IGetMemoryPersonDetailQueryService, GetMemoryPersonDetailQueryService>();
             services.AddControllers();

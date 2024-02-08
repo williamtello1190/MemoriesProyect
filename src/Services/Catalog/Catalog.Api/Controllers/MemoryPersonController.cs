@@ -1,15 +1,21 @@
-﻿using Catalog.Services.Queries.DTOs;
+﻿using Catalog.Services.EventHandlers.Commands.StoredProcedure;
+using Catalog.Services.Queries.DTOs;
 using Catalog.Services.Queries.StoredProcedure;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Service.Common.Collection;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Catalog.Api.Controllers
 {
+    [ApiController]
+    [Route("catalog")]
+    [EnableCors("AllowOrigin")]
     public class MemoryPersonController : ControllerBase
     {
         private readonly ILogger<MemoryPersonController> _logger;
@@ -38,15 +44,21 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpGet("memoryPerson/{MemoryPersonId}")]
-        public async Task<MemoryPersonDto> GetMemoryPerson(Int64 MemoryPersonId)
+        public async Task<MemoryPersonDto> GetMemoryPerson(Int32 MemoryPersonId)
         {
             return await _IGetMemoryPersonQueryService.GetMemoryPerson(MemoryPersonId);
         }
 
         [HttpGet("memoryPersonDetail/{MemoryPersonId}")]
-        public async Task<List<MemoryPersonDetailDto>>GetMemoryPersonDetail(Int64 MemoryPersonId)
+        public async Task<List<MemoryPersonDetailDto>>GetMemoryPersonDetail(Int32 MemoryPersonId)
         {
             return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetail(MemoryPersonId);
+        }
+
+        [HttpPost("createMemoryPerson")]
+        public async Task<DataResponse> CreateMemoryPerson(MemoryPersonCreateCommand comand)
+        {
+            return await _mediator.Send(comand);
         }
     }
 }
