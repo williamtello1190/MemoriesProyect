@@ -77,11 +77,11 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 {
                     foreach (var item in command.Attachment) 
                     {
-                        SqlParameter pFileName = new() { ParameterName = "@fileName", SqlDbType = SqlDbType.VarChar, Value = command.Name };
-                        SqlParameter pFilePath = new() { ParameterName = "@filePath", SqlDbType = SqlDbType.VarChar, Value = command.LastName };
-                        SqlParameter pPhysicalName = new() { ParameterName = "@physicalName", SqlDbType = SqlDbType.VarChar, Value = command.BirthDate };
-                        SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = command.DeathDate };
-                        SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = command.Description };
+                        SqlParameter pFileName = new() { ParameterName = "@fileName", SqlDbType = SqlDbType.VarChar, Value = item.FileName };
+                        SqlParameter pFilePath = new() { ParameterName = "@filePath", SqlDbType = SqlDbType.VarChar, Value = item.FilePath };
+                        SqlParameter pPhysicalName = new() { ParameterName = "@physicalName", SqlDbType = SqlDbType.VarChar, Value = item.PhysicalName };
+                        SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = item.Extension };
+                        SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = item.Description };
                         SqlParameter oCodeAttach = new() { ParameterName = "@codeAttach", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
                         await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pUserRegister, oCodeAttach);
 
