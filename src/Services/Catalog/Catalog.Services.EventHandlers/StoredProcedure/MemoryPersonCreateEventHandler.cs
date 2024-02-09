@@ -34,32 +34,73 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
             try
             {
                 _context.Database.OpenConnection();
+
+                #region usuario
+                SqlParameter pNameUser = new() { ParameterName = "@nameUser", SqlDbType = SqlDbType.VarChar, Value = command.User.Name };
+                SqlParameter pLastNameUser = new() { ParameterName = "@lastNameUser", SqlDbType = SqlDbType.VarChar, Value = command.User.LastName };
+                SqlParameter pEmail = new() { ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = command.User.Email };
+                SqlParameter pUserName = new() { ParameterName = "@userName", SqlDbType = SqlDbType.VarChar, Value = command.User.UserName };
+                SqlParameter pPassword = new() { ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = command.User.Password };
+                SqlParameter pUserRegister = new() { ParameterName = "@userRegister", SqlDbType = SqlDbType.VarChar, Value = command.UserRegister };
+                SqlParameter oCodeUser = new() { ParameterName = "@codeUser", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterUser]  @nameUser, @lastNameUser, @lastName, @email, @userName, @password, userRegister, @codeUser OUTPUT", pNameUser, pLastNameUser, pEmail, pUserName, pPassword, pUserRegister, oCodeUser);
+
+                int respIdUser = string.IsNullOrWhiteSpace(oCodeUser.Value.ToString()) ? 0 : int.Parse(oCodeUser.Value.ToString());
+                if (respIdUser <= 0)
+                {
+                    await transaction.CommitAsync();
+                    return messageError("No se grabo al usuario");
+                }
+                #endregion
+
+                #region memoria
                 SqlParameter pName = new() { ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = command.Name };
                 SqlParameter pLastName = new() { ParameterName = "@lastName", SqlDbType = SqlDbType.VarChar, Value = command.LastName };
                 SqlParameter pBirthDate = new() { ParameterName = "@birthDate", SqlDbType = SqlDbType.VarChar, Value = command.BirthDate };
                 SqlParameter pDeathDate = new() { ParameterName = "@deathDate", SqlDbType = SqlDbType.VarChar, Value = command.DeathDate };
                 SqlParameter pDescription = new() { ParameterName = "@description", SqlDbType = SqlDbType.VarChar, Value = command.Description };
-                SqlParameter pUserId = new() { ParameterName = "@userId", SqlDbType = SqlDbType.Int, Value = command.UserId };
+                SqlParameter pUserId = new() { ParameterName = "@userId", SqlDbType = SqlDbType.Int, Value = respIdUser };
                 SqlParameter pCodeQR = new() { ParameterName = "@codeQR", SqlDbType = SqlDbType.VarChar, Value = command.CodeQR };
                 SqlParameter oCode = new() { ParameterName = "@code", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterMemoryPerson]  @studentId, @name, @lastName, @birthDate, @deathDate, @description, @userId, @codeQR, @code OUTPUT", pName, pLastName, pBirthDate, pDeathDate, pDescription, pUserId, pCodeQR, oCode);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterMemoryPerson]  @studentId, @name, @lastName, @birthDate, @deathDate, @description, @userId, @codeQR, @userRegister, @code OUTPUT", pName, pLastName, pBirthDate, pDeathDate, pDescription, pUserId, pCodeQR, pUserRegister, oCode);
 
-                int respId = string.IsNullOrWhiteSpace(oCode.Value.ToString()) ? 0 : int.Parse(oCode.Value.ToString());
-
-                if (respId > 0)
+                int respIdMemory = string.IsNullOrWhiteSpace(oCode.Value.ToString()) ? 0 : int.Parse(oCode.Value.ToString());
+                if (respIdMemory <= 0)
                 {
-                    resp.Code = DataResponse.STATUS_CREADO;
-                    resp.Status = true;
-                    resp.IDbdGenerado = respId;
                     await transaction.CommitAsync();
+                    return messageError("No se grabo la memoria");
                 }
-                else
+                #endregion
+
+                #region adjuntos
+                if (command.Attachment.Count() > 0) 
                 {
-                    resp.Code = DataResponse.STATUS_ERROR;
-                    resp.Status = false;
-                    resp.IDbdGenerado = -1;
-                    await transaction.RollbackAsync();
+                    foreach (var item in command.Attachment) 
+                    {
+                        SqlParameter pFileName = new() { ParameterName = "@fileName", SqlDbType = SqlDbType.VarChar, Value = command.Name };
+                        SqlParameter pFilePath = new() { ParameterName = "@filePath", SqlDbType = SqlDbType.VarChar, Value = command.LastName };
+                        SqlParameter pPhysicalName = new() { ParameterName = "@physicalName", SqlDbType = SqlDbType.VarChar, Value = command.BirthDate };
+                        SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = command.DeathDate };
+                        SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = command.Description };
+                        SqlParameter oCodeAttach = new() { ParameterName = "@codeAttach", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
+                        await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pUserRegister, oCodeAttach);
+
+                        int respIdAttachment = string.IsNullOrWhiteSpace(oCodeAttach.Value.ToString()) ? 0 : int.Parse(oCodeAttach.Value.ToString());
+                        if (respIdAttachment <= 0)
+                        {
+                            await transaction.CommitAsync();
+                            return messageError("No se grabo el adjunto");
+                        }
+                    }
                 }
+                #endregion
+
+                resp.Code = DataResponse.STATUS_CREADO;
+                resp.Status = true;
+                resp.IDbdGenerado = respIdMemory;
+                resp.Message = "Se grabo Correctamente";
+                await transaction.CommitAsync();
+
             }
             catch (Exception ex)
             {
@@ -74,6 +115,15 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 _context.Database.CloseConnection();
             }
 
+            return resp;
+        }
+
+        public DataResponse messageError(string message)
+        {
+            var resp = new DataResponse();
+            resp.Code = DataResponse.STATUS_ERROR;
+            resp.Message = message;
+            resp.Status = false;
             return resp;
         }
     
