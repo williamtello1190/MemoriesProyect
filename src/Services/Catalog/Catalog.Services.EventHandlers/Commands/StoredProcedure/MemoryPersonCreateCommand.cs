@@ -25,6 +25,7 @@ namespace Catalog.Services.EventHandlers.Commands.StoredProcedure
     {
         public string Name { get; set; }
         public string LastName { get; set; }
+        public string DocumentNumber { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; } 
@@ -37,5 +38,6 @@ namespace Catalog.Services.EventHandlers.Commands.StoredProcedure
         public string PhysicalName { get; set; }
         public string Extension { get; set; }
         public string Description { get; set; }
+        public string IsMain { get; set; }
     }
 }

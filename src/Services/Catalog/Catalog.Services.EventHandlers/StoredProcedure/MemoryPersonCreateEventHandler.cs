@@ -38,12 +38,13 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 #region usuario
                 SqlParameter pNameUser = new() { ParameterName = "@nameUser", SqlDbType = SqlDbType.VarChar, Value = command.User.Name };
                 SqlParameter pLastNameUser = new() { ParameterName = "@lastNameUser", SqlDbType = SqlDbType.VarChar, Value = command.User.LastName };
+                SqlParameter pDocumentNumber = new() { ParameterName = "@documentNumber", SqlDbType = SqlDbType.VarChar, Value = command.User.DocumentNumber };
                 SqlParameter pEmail = new() { ParameterName = "@email", SqlDbType = SqlDbType.VarChar, Value = command.User.Email };
                 SqlParameter pUserName = new() { ParameterName = "@userName", SqlDbType = SqlDbType.VarChar, Value = command.User.UserName };
                 SqlParameter pPassword = new() { ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = command.User.Password };
                 SqlParameter pUserRegister = new() { ParameterName = "@userRegister", SqlDbType = SqlDbType.VarChar, Value = command.UserRegister };
                 SqlParameter oCodeUser = new() { ParameterName = "@codeUser", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterUser]  @nameUser, @lastNameUser, @lastName, @email, @userName, @password, userRegister, @codeUser OUTPUT", pNameUser, pLastNameUser, pEmail, pUserName, pPassword, pUserRegister, oCodeUser);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterUser]  @nameUser, @lastNameUser, @lastName, @documentNumber, @email, @userName, @password, userRegister, @codeUser OUTPUT", pNameUser, pLastNameUser, pDocumentNumber, pEmail, pUserName, pPassword, pUserRegister, oCodeUser);
 
                 int respIdUser = string.IsNullOrWhiteSpace(oCodeUser.Value.ToString()) ? 0 : int.Parse(oCodeUser.Value.ToString());
                 if (respIdUser <= 0)
@@ -82,8 +83,10 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                         SqlParameter pPhysicalName = new() { ParameterName = "@physicalName", SqlDbType = SqlDbType.VarChar, Value = item.PhysicalName };
                         SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = item.Extension };
                         SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = item.Description };
+                        SqlParameter pMemoryPersonId = new() { ParameterName = "@memoryPersonId", SqlDbType = SqlDbType.Int, Value = respIdMemory };
+                        SqlParameter pIsMain = new() { ParameterName = "@isMain", SqlDbType = SqlDbType.VarChar, Value = item.IsMain };
                         SqlParameter oCodeAttach = new() { ParameterName = "@codeAttach", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                        await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pUserRegister, oCodeAttach);
+                        await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @memoryPersonId, @isMain, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pMemoryPersonId, pIsMain, pUserRegister, oCodeAttach);
 
                         int respIdAttachment = string.IsNullOrWhiteSpace(oCodeAttach.Value.ToString()) ? 0 : int.Parse(oCodeAttach.Value.ToString());
                         if (respIdAttachment <= 0)
