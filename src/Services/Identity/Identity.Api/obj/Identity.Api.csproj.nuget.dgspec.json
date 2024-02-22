@@ -507,6 +507,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[5.8.14, )"
+            },
             "FreeSpire.Office": {
               "target": "Package",
               "version": "[4.3.1, )"
@@ -514,6 +518,10 @@
             "QRCoder": {
               "target": "Package",
               "version": "[1.4.3, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.10, )"
             }
           },
           "imports": [

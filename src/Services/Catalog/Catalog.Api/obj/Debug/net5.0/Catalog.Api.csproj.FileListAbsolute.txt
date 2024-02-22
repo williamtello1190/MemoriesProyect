@@ -110,3 +110,6 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\o
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\obj\Debug\net5.0\Catalog.Api.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\obj\Debug\net5.0\Catalog.Api.genruntimeconfig.cache
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\obj\Debug\net5.0\ref\Catalog.Api.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\bin\Debug\net5.0\EPPlus.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\bin\Debug\net5.0\itextsharp.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Api\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll

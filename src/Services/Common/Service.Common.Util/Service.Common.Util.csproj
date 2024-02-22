@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.8.14" />
     <PackageReference Include="FreeSpire.Office" Version="4.3.1" />
+    <PackageReference Include="iTextSharp" Version="5.5.10" />
     <PackageReference Include="QRCoder" Version="1.4.3" />
   </ItemGroup>
 

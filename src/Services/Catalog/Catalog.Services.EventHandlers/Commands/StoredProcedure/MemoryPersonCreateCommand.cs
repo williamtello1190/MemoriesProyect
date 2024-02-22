@@ -31,13 +31,19 @@ namespace Catalog.Services.EventHandlers.Commands.StoredProcedure
         public string Password { get; set; } 
     }
 
-    public class MemoryPersonAttachmentCommand
+    public class MemoryPersonAttachmentCommand : IRequest<DataResponse>
     {
+        public Int64 MemoryPersonId { get; set; } 
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public string PhysicalName { get; set; }
         public string Extension { get; set; }
         public string Description { get; set; }
         public string IsMain { get; set; }
+        public string FileServer { get; set; }
+        public string FileBase64 { get; set; }
+        public string Option { get; set; }
+        public string UserRegister { get; set; }
+
     }
 }
