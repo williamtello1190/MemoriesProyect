@@ -41,12 +41,12 @@ namespace Service.Common.Util.GenerarPlantilla
                 string plantillaPDF = _rutaServer + _rutaPlantillaArchivo + "ConstanciaVerificacionPYM.pdf";
                 string pathSavePDF = _rutaGuardarArchivo;
 
-                if (!File.Exists(plantillaPDF))
-                {
-                    resp.Code = DataResponse.STATUS_ERROR;
-                    resp.Message = "No existe plantilla principal o ruta";
-                    return resp;
-                }
+                //if (!File.Exists(plantillaPDF))
+                //{
+                //    resp.Code = DataResponse.STATUS_ERROR;
+                //    resp.Message = "No existe plantilla principal o ruta";
+                //    return resp;
+                //}
 
                 var fecha = DateTime.Now;
                 string strMes = fecha.Month.ToString().PadLeft(2, '0');
@@ -106,11 +106,6 @@ namespace Service.Common.Util.GenerarPlantilla
             try
             {
                 string opcionBtn = string.Empty;
-                String path = string.Empty;
-
-                FileInfo sourceFilePlantillaUnica = new FileInfo(PlantillaDocx);
-                PdfReader reader = new PdfReader(sourceFilePlantillaUnica.FullName);
-
                 Document document = new Document();
                 MemoryStream output = new MemoryStream();
 
@@ -123,8 +118,8 @@ namespace Service.Common.Util.GenerarPlantilla
                 PdfContentByte content = writer.DirectContent;
                 content = writer.DirectContent;
                 content.BeginText();
-
-                string urlPDF = @"https://webexterno.sutran.gob.pe/WebExterno" + encriptado;
+                //string urlPDF = @"aca el link" + encriptado;
+                string urlPDF = @"https://www.google.com/";
 
                 Uri myUri = new Uri(urlPDF, UriKind.Absolute);
                 Url generator = new Url(myUri.OriginalString);
@@ -157,12 +152,7 @@ namespace Service.Common.Util.GenerarPlantilla
                 //}
 
                 content.EndText();
-
-                PdfImportedPage page = writer.GetImportedPage(reader, 1);
-                content.AddTemplate(page, 0, 0);
-
                 document.Close();
-                reader.Close();
                 var file = new BEFileResponse();
                 file.ByteFile = output.ToArray();
                 resp.Data = file;
@@ -186,7 +176,7 @@ namespace Service.Common.Util.GenerarPlantilla
             QRCoder.QRCodeGenerator qr = new QRCodeGenerator();
             var data = qr.CreateQrCode(codigo, QRCoder.QRCodeGenerator.ECCLevel.L);
             var code = new QRCoder.QRCode(data);
-            Bitmap img = code.GetGraphic(5);
+            Bitmap img = code.GetGraphic(20);
 
             System.IO.MemoryStream ms = new MemoryStream();
             img.Save(ms, ImageFormat.Jpeg);
@@ -194,9 +184,9 @@ namespace Service.Common.Util.GenerarPlantilla
             iTextSharp.text.Image imagendemo;
 
             imagendemo = iTextSharp.text.Image.GetInstance(img, System.Drawing.Imaging.ImageFormat.Bmp);
-            imagendemo.SetAbsolutePosition(30, 6);//'Posicion en el eje cartesiano
-            imagendemo.ScaleAbsoluteWidth(100);//'Ancho de la imagen
-            imagendemo.ScaleAbsoluteHeight(100);// 'Altura de la imagen
+            imagendemo.SetAbsolutePosition(200, 200);//'Posicion en el eje cartesiano
+            imagendemo.ScaleAbsoluteWidth(200);//'Ancho de la imagen
+            imagendemo.ScaleAbsoluteHeight(200);// 'Altura de la imagen
             document.Add(imagendemo);//' Agrega la imagen al documento
 
         }

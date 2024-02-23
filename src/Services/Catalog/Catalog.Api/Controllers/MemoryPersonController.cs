@@ -91,7 +91,10 @@ namespace Catalog.Api.Controllers
                         if (respSaveFile.Status)
                         {
                             doc.FileName = respSaveFile.Data.FileName;
+                            doc.PhysicalName = respSaveFile.Data.FileName;
                             doc.FilePath = filePath + rutaDinamica;
+                            doc.FileServer = filePathRoot;
+                            doc.Option = "I";
                             lstdocAttachment.Add(doc);
                         }
                         else
@@ -122,7 +125,10 @@ namespace Catalog.Api.Controllers
                     commandAttach.FileName = respAdjunto.Data.FileName;
                     commandAttach.FilePath = respAdjunto.Data.FileRuta;
                     commandAttach.PhysicalName = respAdjunto.Data.FileName;
+                    commandAttach.Extension = ".pdf";
                     commandAttach.FileServer = routeRoot;
+                    commandAttach.Description = encriptado;
+                    commandAttach.Option = "P";
                     var respAttach = await _mediator.Send(commandAttach);
                     if (respAttach.IDbdGenerado <= 0)
                     {

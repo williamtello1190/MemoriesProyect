@@ -38,12 +38,14 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pFilePath = new() { ParameterName = "@filePath", SqlDbType = SqlDbType.VarChar, Value = command.FilePath };
                 SqlParameter pPhysicalName = new() { ParameterName = "@physicalName", SqlDbType = SqlDbType.VarChar, Value = command.PhysicalName };
                 SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = command.Extension };
-                SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = "" };
+                SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = command.Description };
                 SqlParameter pMemoryPersonId = new() { ParameterName = "@memoryPersonId", SqlDbType = SqlDbType.Int, Value = command.MemoryPersonId };
                 SqlParameter pIsMain = new() { ParameterName = "@isMain", SqlDbType = SqlDbType.VarChar, Value = "" };
+                SqlParameter pFileServer = new() { ParameterName = "@fileServer", SqlDbType = SqlDbType.VarChar, Value = command.FileServer };
+                SqlParameter pOption = new() { ParameterName = "@option", SqlDbType = SqlDbType.VarChar, Value = command.Option };
                 SqlParameter pUserRegister = new() { ParameterName = "@userRegister", SqlDbType = SqlDbType.VarChar, Value = command.UserRegister };
                 SqlParameter oCodeAttach = new() { ParameterName = "@codeAttach", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @memoryPersonId, @isMain, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pMemoryPersonId, pIsMain, pUserRegister, oCodeAttach);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @fileName, @filePath, @physicalName, @extension, @descriptionAttach, @memoryPersonId, @isMain, @fileServer, @option, @userRegister, @codeAttach OUTPUT", pFileName, pFilePath, pPhysicalName, pExtension, pDescriptionAttach, pMemoryPersonId, pIsMain, pFileServer, pOption, pUserRegister, oCodeAttach);
 
                 int respIdAttachment = string.IsNullOrWhiteSpace(oCodeAttach.Value.ToString()) ? 0 : int.Parse(oCodeAttach.Value.ToString());
                 if (respIdAttachment <= 0)
