@@ -17,5 +17,6 @@ namespace Catalog.Domain.StoredProcedure
         public string Extension { get; set; }
         public string Description { get; set; }
         public string IsMain { get; set; }
+        public string FileServer { get; set; }
     }
 }

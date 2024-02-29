@@ -16,16 +16,15 @@ namespace Service.Common.Util.GenerarPlantilla
 {
     public class GenerarArchivoQR
     {
-        private readonly string _rutaPlantillaArchivo, _rutaGuardarArchivo, _rutaServer;
+        private readonly string _rutaGuardarArchivo, _rutaServer;
         public GenerarArchivoQR() { }
-        public GenerarArchivoQR(string rutaPlantillaArchivo, string rutaGuardarArchivo, string rutaServer)
+        public GenerarArchivoQR(string rutaGuardarArchivo, string rutaServer)
         {
-            _rutaPlantillaArchivo = rutaPlantillaArchivo;
             _rutaGuardarArchivo = rutaGuardarArchivo;
             _rutaServer = rutaServer;
         }
 
-        public DataResponse<BEFileResponse> GenerarArchivo(string encriptado, string compilado)
+        public DataResponse<BEFileResponse> GenerarArchivo(string urlPdf, string compilado)
         {
             DataResponse<BEFileResponse> resp = new DataResponse<BEFileResponse>();
             var respAddFile = new DataResponse<BEFileResponse>();
@@ -37,16 +36,7 @@ namespace Service.Common.Util.GenerarPlantilla
 
                 string rutaFile = "";
                 string rutaDinamica = "";
-
-                string plantillaPDF = _rutaServer + _rutaPlantillaArchivo + "ConstanciaVerificacionPYM.pdf";
                 string pathSavePDF = _rutaGuardarArchivo;
-
-                //if (!File.Exists(plantillaPDF))
-                //{
-                //    resp.Code = DataResponse.STATUS_ERROR;
-                //    resp.Message = "No existe plantilla principal o ruta";
-                //    return resp;
-                //}
 
                 var fecha = DateTime.Now;
                 string strMes = fecha.Month.ToString().PadLeft(2, '0');
@@ -56,7 +46,7 @@ namespace Service.Common.Util.GenerarPlantilla
                 rutaFile += fecha.Year.ToString() + "\\" + strMes + "\\" + strDia + "\\";
                 rutaDinamica += pathSavePDF + rutaFile;
                 pathSavePDF = _rutaServer + rutaDinamica + sNameGenPdf;
-                respAddFile = GenerarDocumentoQR(plantillaPDF, pathSavePDF, encriptado);
+                respAddFile = GenerarDocumentoQR(urlPdf);
 
                 if (!Directory.Exists(_rutaServer + rutaDinamica))
                 {
@@ -82,6 +72,7 @@ namespace Service.Common.Util.GenerarPlantilla
                 resp.Data.FileRuta = rutaDinamica;
                 resp.Data.FileName = sNameGenPdf;
                 resp.File = Convert.ToBase64String(respAddFile.Data.ByteFile);
+                resp.Data.ByteFile = respAddFile.Data.ByteFile;
                 resp.Status = true;
                 resp.Code = DataResponse.STATUS_CREADO;
 
@@ -96,9 +87,7 @@ namespace Service.Common.Util.GenerarPlantilla
 
         }
 
-
-
-        private DataResponse<BEFileResponse> GenerarDocumentoQR(string PlantillaDocx, string pathSavePDF, string encriptado)
+        private DataResponse<BEFileResponse> GenerarDocumentoQR(string urlPdf)
         {
             var resp = new DataResponse<BEFileResponse>();
 
@@ -119,9 +108,9 @@ namespace Service.Common.Util.GenerarPlantilla
                 content = writer.DirectContent;
                 content.BeginText();
                 //string urlPDF = @"aca el link" + encriptado;
-                string urlPDF = @"https://www.google.com/";
+                //string urlPDF = @"https://www.google.com/";
 
-                Uri myUri = new Uri(urlPDF, UriKind.Absolute);
+                Uri myUri = new Uri(urlPdf, UriKind.Absolute);
                 Url generator = new Url(myUri.OriginalString);
                 string payload = generator.ToString();
 

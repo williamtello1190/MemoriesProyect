@@ -32,6 +32,11 @@ namespace Catalog.Api.Controllers
         private readonly string _templateArchivoQR;
         private readonly string _saveArchivoQR;
         private readonly string _saveImageMemory;
+        private readonly string _mail;
+        private readonly string _password;
+        private readonly string _host;
+        private readonly int _port;
+        private readonly string _urlWeb;
         public MemoryPersonController(
           ILogger<MemoryPersonController> logger,
           IMediator mediator,
@@ -50,18 +55,47 @@ namespace Catalog.Api.Controllers
             _templateArchivoQR = _configuration.GetSection("ConfigDocument").GetSection("TemplateArchivoQR").Value;
             _saveArchivoQR = _configuration.GetSection("ConfigDocument").GetSection("SaveArchivoQR").Value;
             _saveImageMemory = _configuration.GetSection("ConfigDocument").GetSection("SaveImageMemory").Value;
+            _mail = _configuration.GetSection("MailSettings").GetSection("Mail").Value;
+            _password = _configuration.GetSection("MailSettings").GetSection("Password").Value;
+            _host = _configuration.GetSection("MailSettings").GetSection("Host").Value;
+            _port = int.Parse(_configuration.GetSection("MailSettings").GetSection("Port").Value);
+            _urlWeb = _configuration.GetSection("ConfigDocument").GetSection("UrlWeb").Value;
         }
 
-        [HttpGet("memoryPerson/{MemoryPersonId}")]
-        public async Task<MemoryPersonDto> GetMemoryPerson(Int32 MemoryPersonId)
+        [HttpGet("memoryPersonById/{MemoryPersonId}")]
+        public async Task<MemoryPersonDto> GetMemoryPersonById(Int32 MemoryPersonId)
         {
-            return await _IGetMemoryPersonQueryService.GetMemoryPerson(MemoryPersonId);
+            return await _IGetMemoryPersonQueryService.GetMemoryPersonById(MemoryPersonId);
         }
 
-        [HttpGet("memoryPersonDetail/{MemoryPersonId}")]
-        public async Task<List<MemoryPersonDetailDto>>GetMemoryPersonDetail(Int32 MemoryPersonId)
+        [HttpGet("memoryPersonDetailById/{MemoryPersonId}")]
+        public async Task<List<MemoryPersonDetailDto>>GetMemoryPersonDetailById(Int32 MemoryPersonId)
         {
-            return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetail(MemoryPersonId);
+            return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
+        }
+        [HttpGet("memoryPersonByCodeQR/{CodeQR}")]
+        public async Task<MemoryPersonDto> GetMemoryPersonByCodeQR(string CodeQR)
+        {
+            return await _IGetMemoryPersonQueryService.GetMemoryPersonByCodeQR(CodeQR);
+        }
+
+        [HttpGet("memoryPersonDetailByCodeQR/{CodeQR}")]
+        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailByCodeQR(string CodeQR)
+        {
+            var resp = new List<MemoryPersonDetailDto>();
+            try
+            {
+                resp = await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailByCodeQR(CodeQR);
+                if (resp.Count > 0)
+                {
+                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FilseServer + x.FilePath + x.PhysicalName)));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return resp;
         }
 
         [HttpPost("createMemoryPerson")]
@@ -111,8 +145,10 @@ namespace Catalog.Api.Controllers
                 if (result.IDbdGenerado > 0)
                 {
                     encriptado = funciones.Encriptar(result.IDbdGenerado.ToString());
-                    GenerarArchivoQR doc = new GenerarArchivoQR(_templateArchivoQR, _saveArchivoQR, routeRoot);
-                    respAdjunto = doc.GenerarArchivo(encriptado, _defaultConnection);
+                    //string urlPdf = _urlWeb + encriptado;
+                    string urlPdf = _urlWeb;
+                    GenerarArchivoQR doc = new GenerarArchivoQR(_saveArchivoQR, routeRoot);
+                    respAdjunto = doc.GenerarArchivo(urlPdf, _defaultConnection);
                     if (!respAdjunto.Status)
                     {
                         resp.Message = respAdjunto.Message;
@@ -136,7 +172,9 @@ namespace Catalog.Api.Controllers
                         return resp;
                     }
 
-                    resp.Message = "Guardado Correctamente";
+                    var respEnvio = sendEmail(result.IDbdGenerado, command.User.Email, urlPdf, respAdjunto.Data.ByteFile, command.User.Name + " " + command.User.LastName, command.Name + " " + command.LastName);
+
+                    resp.Message = "Guardado Correctamente - " + respEnvio.Message;
                     resp.Code = DataResponse.STATUS_CREADO;
                     resp.Status = true;
                     resp.IDbdGenerado = result.IDbdGenerado;
@@ -204,6 +242,111 @@ namespace Catalog.Api.Controllers
 
             return resp;
 
+        }
+
+        public DataResponse sendEmail(Int64 MemoryPersonId, string correo, string linkUrl, byte[] file, string nameRegister, string nameMemory)
+        {
+            DataResponse resp = new DataResponse();
+            string titulo = string.Empty;
+            string urlAmbiente = _defaultConnection.Contains("SUTRANSIS") ? "WebExterno" : "WebExternoPruebas_2";
+            string msgBody = string.Empty;
+            string tituloCorreo = string.Empty;
+            DateTime fechaEnvio = DateTime.Now;
+
+            try
+            {
+                tituloCorreo = "Solicitud de registro de Memoria";
+                titulo = "SOLICITUD MEMORIAS";
+                string modulo = linkUrl;
+                string fechaEnvioEmail = fechaEnvio.ToString("dd ") + "de" + fechaEnvio.ToString(" MMMM ") + "del" + fechaEnvio.ToString(" yyyy");
+                #region :: mensaje
+                msgBody += @"<tr>
+                                    <td colspan = '3'>
+                                        <p style = 'text-align:justify'> Estimado(a) Sr(a): " + nameRegister + @"</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan = '3'>
+                                        <p style = 'text-align:justify'> Se le comunica a usted que su solicitud ha sido registrado." + @" </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan = '3'>
+                                        <p style = 'text-align:justify'> " + "Por lo tanto, se le envía el pdf adjunto del Codigo QR generado y el link de la web" +
+                                                                    @"<a href ='" + modulo + @"' target='_BLANK'>Click aquí, para ver el registro.</a></p>
+									</td>
+								</tr> 
+                                <tr>
+									<td colspan='3'> 
+                                        <p style='text-align:justify'>Lima, " + fechaEnvioEmail + @"</p>
+                                    </td>
+								</tr>
+                                ";
+                #endregion
+
+
+                string logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fes%2Fpng-ipoql&psig=AOvVaw3BWGUqFbj-GrZZVk78ypDG&ust=1709254536494000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJCmn8Orz4QDFQAAAAAdAAAAABAE";
+                string body = @"
+                            <center>
+								<table width='90%' style='font-family:calibri; margin:30px; color:#222;'>
+									<tr>
+										<td><img src='" + logo + @"'/></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td colspan='3' align='center'><b>" + titulo + @"</b></td>
+									</tr>" + msgBody + @"
+									<tr>
+										<td colspan='3'>&nbsp;</td>
+									</tr>
+									<tr>
+										<td colspan='3' align='left'>
+											<stroing>Nota:</strong><br/>
+											Mensaje Automático, por favor no responder.<br/>
+											<span style='color:#7EA953'>Imprime este correo electrónico sólo si es necesario. Cuidar el ambiente es responsabilidad de todos.</span><br/>
+										</td>
+									</tr>
+									<tr>
+										<td colspan='3' align='center'>&nbsp;</td>
+									</tr>
+								</table>
+							</center>";
+
+                MailRequestDto dataEmail = new MailRequestDto()
+                {
+                    Body = body,
+                    Subject = tituloCorreo,
+                    ToEmail = correo
+                };
+
+                SendEmail doc = new SendEmail(_host, _port, _mail, _password);
+                var respEnvio = doc.EnviarEmail(dataEmail, file, nameMemory);
+                if (respEnvio.IDbdGenerado > 0)
+                {
+                    resp.IDbdGenerado = 1;
+                    resp.Status = true;
+                    resp.Message = "Se envio correo electronico";
+                }
+                else
+                {
+                    resp.Status = false;
+                    resp.IDbdGenerado = -1;
+                    resp = respEnvio;
+                    resp.Message = "No se envio correo electronico";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = "No se pudo enviar el mensaje";
+                resp.Status = false;
+                resp.IDbdGenerado = -1;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+
+            }
+
+            return resp;
         }
     }
 }

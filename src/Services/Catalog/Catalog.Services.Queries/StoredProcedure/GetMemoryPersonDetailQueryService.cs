@@ -14,7 +14,8 @@ namespace Catalog.Services.Queries.StoredProcedure
 {
     public interface IGetMemoryPersonDetailQueryService
     {
-        Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int32 MemoryPersonId);
+        Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailById(Int32 MemoryPersonId);
+        Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailByCodeQR(string CodeQR);
     }
     public class GetMemoryPersonDetailQueryService : IGetMemoryPersonDetailQueryService
     {
@@ -25,10 +26,19 @@ namespace Catalog.Services.Queries.StoredProcedure
             _context = context;
         }
 
-        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetail(Int32 MemoryPersonId)
+        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailById(Int32 MemoryPersonId)
         {
             SqlParameter pMemoryPersonId = new() { ParameterName = "@MemoryPersonId", SqlDbType = SqlDbType.Int, Value = MemoryPersonId };
             var collection = await _context.MemoryPersonDetail.FromSqlRaw("EXEC [dbo].[uspGetMemoryPersonDetail] @MemoryPersonId", pMemoryPersonId).ToListAsync();
+
+            return collection.MapTo<List<MemoryPersonDetailDto>>();
+
+        }
+
+        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailByCodeQR(string CodeQR)
+        {
+            SqlParameter pCodeQR = new() { ParameterName = "@CodeQR", SqlDbType = SqlDbType.Int, Value = CodeQR };
+            var collection = await _context.MemoryPersonDetail.FromSqlRaw("EXEC [dbo].[uspGetMemoryPersonDetailByCodeQR] @CodeQR", pCodeQR).ToListAsync();
 
             return collection.MapTo<List<MemoryPersonDetailDto>>();
 

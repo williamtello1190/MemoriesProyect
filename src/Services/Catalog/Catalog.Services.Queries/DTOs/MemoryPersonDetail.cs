@@ -17,5 +17,7 @@ namespace Catalog.Services.Queries.DTOs
         public string Extension { get; set; }
         public string Description { get; set; }
         public string IsMain { get; set; }
+        public string Base64File { get; set; }
+        public string FilseServer { get; set; }
     }
 }
