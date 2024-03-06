@@ -113,20 +113,19 @@ namespace Catalog.Api.Controllers
             {
                 string filePathRoot = routeRoot;
                 filePath = _saveImageMemory;
-                string strMes = fecha.Month.ToString().PadLeft(2, '0');
-                string strDia = fecha.Day.ToString().PadLeft(2, '0');
-                rutaDinamica += fecha.Year.ToString() + @"\" + strMes + @"\" + strDia + @"\";
                 List<MemoryPersonAttachmentCommand> lstdocAttachment = new List<MemoryPersonAttachmentCommand>();
                 if (command.Attachment != null && command.Attachment.Count > 0)
                 {
                     foreach (MemoryPersonAttachmentCommand doc in command.Attachment)
                     {
-                        var respSaveFile = SaveDocument(filePathRoot + filePath + rutaDinamica, doc.FileBase64, doc.Extension, _defaultConnection);
+                        //var respSaveFile = SaveDocument(filePathRoot + filePath + rutaDinamica, doc.FileBase64, doc.Extension, _defaultConnection);
+                        SaveFile docSave = new SaveFile(filePathRoot + filePath);
+                        var respSaveFile = docSave.SaveDocument(doc.FileBase64, doc.Extension, _defaultConnection);
                         if (respSaveFile.Status)
                         {
                             doc.FileName = respSaveFile.Data.FileName;
                             doc.PhysicalName = respSaveFile.Data.FileName;
-                            doc.FilePath = filePath + rutaDinamica;
+                            doc.FilePath = respSaveFile.Data.FileRuta;
                             doc.FileServer = filePathRoot;
                             doc.Option = "I";
                             lstdocAttachment.Add(doc);
@@ -190,60 +189,61 @@ namespace Catalog.Api.Controllers
             return resp;
         }
 
-        public DataResponse<BEFileResponse> SaveDocument(string filePath, string docCode64, string fileType, string compilado)
-        {
-            var resp = new DataResponse<BEFileResponse>();
-            var Fileresp = new BEFileResponse();
-            try
-            {
+        #region codigo antiguo
+        //public DataResponse<BEFileResponse> SaveDocument(string filePath, string docCode64, string fileType, string compilado)
+        //{
+        //    var resp = new DataResponse<BEFileResponse>();
+        //    var Fileresp = new BEFileResponse();
+        //    try
+        //    {
 
-                if (!Directory.Exists(filePath))
-                {
-                    Directory.CreateDirectory(filePath);
-                }
+        //        if (!Directory.Exists(filePath))
+        //        {
+        //            Directory.CreateDirectory(filePath);
+        //        }
 
-                if (!Directory.Exists(filePath))
-                {
-                    resp.Status = false;
-                    resp.Code = DataResponse.STATUS_ERROR;
-                    resp.Message = "No se pudo crear la ruta";
-                    return resp;
-                }
+        //        if (!Directory.Exists(filePath))
+        //        {
+        //            resp.Status = false;
+        //            resp.Code = DataResponse.STATUS_ERROR;
+        //            resp.Message = "No se pudo crear la ruta";
+        //            return resp;
+        //        }
 
-                string nameGenPDF = Guid.NewGuid().ToString("N");
-                string sNameGenPdf = nameGenPDF + fileType;
-                string ambiente = compilado.Contains("/PRUEBAS") ? "pruebas_" : "";
-                //grabamos el archivo
-                byte[] data = System.Convert.FromBase64String(docCode64);
-                System.IO.File.WriteAllBytes(filePath + ambiente + sNameGenPdf, data);
+        //        string nameGenPDF = Guid.NewGuid().ToString("N");
+        //        string sNameGenPdf = nameGenPDF + fileType;
+        //        string ambiente = compilado.Contains("/PRUEBAS") ? "pruebas_" : "";
+        //        //grabamos el archivo
+        //        byte[] data = System.Convert.FromBase64String(docCode64);
+        //        System.IO.File.WriteAllBytes(filePath + ambiente + sNameGenPdf, data);
 
-                if (System.IO.File.Exists(filePath + ambiente + sNameGenPdf))
-                {
-                    Fileresp.FileName = ambiente + sNameGenPdf;
-                    resp.Status = true;
-                    resp.Data = Fileresp;
-                    resp.Code = DataResponse.STATUS_CREADO;
-                }
-                else
-                {
-                    resp.Status = false;
-                    resp.Code = DataResponse.STATUS_ERROR;
-                    resp.Message = "No se pudo almacenar el archivo";
-                }
+        //        if (System.IO.File.Exists(filePath + ambiente + sNameGenPdf))
+        //        {
+        //            Fileresp.FileName = ambiente + sNameGenPdf;
+        //            resp.Status = true;
+        //            resp.Data = Fileresp;
+        //            resp.Code = DataResponse.STATUS_CREADO;
+        //        }
+        //        else
+        //        {
+        //            resp.Status = false;
+        //            resp.Code = DataResponse.STATUS_ERROR;
+        //            resp.Message = "No se pudo almacenar el archivo";
+        //        }
 
 
-            }
-            catch (Exception ex)
-            {
-                resp.Status = false;
-                resp.Code = DataResponse.STATUS_EXCEPTION;
-                resp.Message = "Error Inesperado: " + ex.Message;
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        resp.Status = false;
+        //        resp.Code = DataResponse.STATUS_EXCEPTION;
+        //        resp.Message = "Error Inesperado: " + ex.Message;
+        //    }
 
-            return resp;
+        //    return resp;
 
-        }
-
+        //}
+        #endregion
         public DataResponse sendEmail(Int64 MemoryPersonId, string correo, string linkUrl, byte[] file, string nameRegister, string nameMemory)
         {
             DataResponse resp = new DataResponse();
@@ -346,6 +346,23 @@ namespace Catalog.Api.Controllers
 
             }
 
+            return resp;
+        }
+
+        [HttpPut("attachmentUpdate")]
+        public async Task<DataResponse> AttachmentUpdate(AttachmentUpdateCommand command)
+        {
+            var resp = new DataResponse();
+            try
+            {
+                resp = await _mediator.Send(command);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = ex.Message;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
             return resp;
         }
     }
