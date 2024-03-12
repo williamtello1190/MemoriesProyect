@@ -69,7 +69,7 @@ namespace Catalog.Api.Controllers
         }
 
         [HttpGet("memoryPersonDetailById/{MemoryPersonId}")]
-        public async Task<List<MemoryPersonDetailDto>>GetMemoryPersonDetailById(Int32 MemoryPersonId)
+        public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailById(Int32 MemoryPersonId)
         {
             return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
         }
@@ -102,7 +102,6 @@ namespace Catalog.Api.Controllers
         public async Task<DataResponse> CreateMemoryPerson(MemoryPersonCreateCommand command)
         {
             var resp = new DataResponse();
-            DataResponse<BEFileResponse> respAdjunto = new DataResponse<BEFileResponse>();
             resp.Status = false;
             resp.Code = -1;
             string encriptado = string.Empty;
@@ -118,7 +117,6 @@ namespace Catalog.Api.Controllers
                 {
                     foreach (MemoryPersonAttachmentCommand doc in command.Attachment)
                     {
-                        //var respSaveFile = SaveDocument(filePathRoot + filePath + rutaDinamica, doc.FileBase64, doc.Extension, _defaultConnection);
                         SaveFile docSave = new SaveFile(filePathRoot + filePath);
                         var respSaveFile = docSave.SaveDocument(doc.FileBase64, doc.Extension, _defaultConnection);
                         if (respSaveFile.Status)
@@ -147,24 +145,14 @@ namespace Catalog.Api.Controllers
                     //string urlPdf = _urlWeb + encriptado;
                     string urlPdf = _urlWeb;
                     GenerarArchivoQR doc = new GenerarArchivoQR(_saveArchivoQR, routeRoot);
-                    respAdjunto = doc.GenerarArchivo(urlPdf, _defaultConnection);
+                    var respAdjunto = doc.GenerarArchivo(urlPdf, _defaultConnection);
                     if (!respAdjunto.Status)
                     {
                         resp.Message = respAdjunto.Message;
                         return resp;
                     }
 
-                    MemoryPersonAttachmentCommand commandAttach = new MemoryPersonAttachmentCommand();
-                    commandAttach.MemoryPersonId = result.IDbdGenerado;
-                    commandAttach.UserRegister = command.UserRegister;
-                    commandAttach.FileName = respAdjunto.Data.FileName;
-                    commandAttach.FilePath = respAdjunto.Data.FileRuta;
-                    commandAttach.PhysicalName = respAdjunto.Data.FileName;
-                    commandAttach.Extension = ".pdf";
-                    commandAttach.FileServer = routeRoot;
-                    commandAttach.Description = encriptado;
-                    commandAttach.Option = "P";
-                    var respAttach = await _mediator.Send(commandAttach);
+                    var respAttach = await RegisterAttachment(respAdjunto, result.IDbdGenerado, command.UserRegister, ".pdf", encriptado, "P", string.Empty);
                     if (respAttach.IDbdGenerado <= 0)
                     {
                         resp.Message = respAttach.Message;
@@ -180,7 +168,7 @@ namespace Catalog.Api.Controllers
                     resp.File = respAdjunto.File;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message + " " + ex.StackTrace);
                 resp.Message = ex.Message;
@@ -189,66 +177,10 @@ namespace Catalog.Api.Controllers
             return resp;
         }
 
-        #region codigo antiguo
-        //public DataResponse<BEFileResponse> SaveDocument(string filePath, string docCode64, string fileType, string compilado)
-        //{
-        //    var resp = new DataResponse<BEFileResponse>();
-        //    var Fileresp = new BEFileResponse();
-        //    try
-        //    {
-
-        //        if (!Directory.Exists(filePath))
-        //        {
-        //            Directory.CreateDirectory(filePath);
-        //        }
-
-        //        if (!Directory.Exists(filePath))
-        //        {
-        //            resp.Status = false;
-        //            resp.Code = DataResponse.STATUS_ERROR;
-        //            resp.Message = "No se pudo crear la ruta";
-        //            return resp;
-        //        }
-
-        //        string nameGenPDF = Guid.NewGuid().ToString("N");
-        //        string sNameGenPdf = nameGenPDF + fileType;
-        //        string ambiente = compilado.Contains("/PRUEBAS") ? "pruebas_" : "";
-        //        //grabamos el archivo
-        //        byte[] data = System.Convert.FromBase64String(docCode64);
-        //        System.IO.File.WriteAllBytes(filePath + ambiente + sNameGenPdf, data);
-
-        //        if (System.IO.File.Exists(filePath + ambiente + sNameGenPdf))
-        //        {
-        //            Fileresp.FileName = ambiente + sNameGenPdf;
-        //            resp.Status = true;
-        //            resp.Data = Fileresp;
-        //            resp.Code = DataResponse.STATUS_CREADO;
-        //        }
-        //        else
-        //        {
-        //            resp.Status = false;
-        //            resp.Code = DataResponse.STATUS_ERROR;
-        //            resp.Message = "No se pudo almacenar el archivo";
-        //        }
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        resp.Status = false;
-        //        resp.Code = DataResponse.STATUS_EXCEPTION;
-        //        resp.Message = "Error Inesperado: " + ex.Message;
-        //    }
-
-        //    return resp;
-
-        //}
-        #endregion
         public DataResponse sendEmail(Int64 MemoryPersonId, string correo, string linkUrl, byte[] file, string nameRegister, string nameMemory)
         {
             DataResponse resp = new DataResponse();
             string titulo = string.Empty;
-            string urlAmbiente = _defaultConnection.Contains("SUTRANSIS") ? "WebExterno" : "WebExternoPruebas_2";
             string msgBody = string.Empty;
             string tituloCorreo = string.Empty;
             DateTime fechaEnvio = DateTime.Now;
@@ -356,6 +288,68 @@ namespace Catalog.Api.Controllers
             try
             {
                 resp = await _mediator.Send(command);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = ex.Message;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
+            return resp;
+        }
+
+        [HttpPost("addAttachmentMemory")]
+        public async Task<DataResponse> AddAttachmentMemory(List<MemoryPersonAttachmentCommand> listCommand)
+        {
+            var resp = new DataResponse();
+            resp.IDbdGenerado = -1;
+            string filePathRoot = routeRoot;
+            string filePath = _saveImageMemory;
+            try
+            {
+                foreach (MemoryPersonAttachmentCommand doc in listCommand)
+                {
+                    SaveFile docSave = new SaveFile(filePathRoot + filePath);
+                    var respSaveFile = docSave.SaveDocument(doc.FileBase64, doc.Extension, _defaultConnection);
+                    if (respSaveFile.Status)
+                    {
+                        resp = await RegisterAttachment(respSaveFile, doc.MemoryPersonId, doc.UserRegister, doc.Extension, doc.Description, "I", string.Empty);
+                    }
+                    else
+                    {
+                        resp.Message = respSaveFile.Message + " archivo " + doc.FileName;
+                        resp = respSaveFile;
+                        return resp;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = ex.Message;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
+            return resp;
+        }
+
+        public async Task<DataResponse> RegisterAttachment(DataResponse<BEFileResponse> request, Int64 id, string user, string extension, string description, string option, string isMain)
+        {
+            var resp = new DataResponse();
+            resp.IDbdGenerado = -1;
+            try
+            {
+                MemoryPersonAttachmentCommand commandAttach = new MemoryPersonAttachmentCommand();
+                commandAttach.MemoryPersonId = id;
+                commandAttach.UserRegister = user;
+                commandAttach.FileName = request.Data.FileName;
+                commandAttach.FilePath = request.Data.FileRuta;
+                commandAttach.PhysicalName = request.Data.FileName;
+                commandAttach.Extension = extension;
+                commandAttach.FileServer = routeRoot;
+                commandAttach.Description = description;
+                commandAttach.Option = option;
+                commandAttach.IsMain = isMain;
+                resp = await _mediator.Send(commandAttach);
             }
             catch (Exception ex)
             {

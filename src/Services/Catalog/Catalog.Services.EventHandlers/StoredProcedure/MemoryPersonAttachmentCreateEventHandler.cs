@@ -40,7 +40,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pExtension = new() { ParameterName = "@extension", SqlDbType = SqlDbType.VarChar, Value = command.Extension };
                 SqlParameter pDescriptionAttach = new() { ParameterName = "@descriptionAttach", SqlDbType = SqlDbType.VarChar, Value = command.Description };
                 SqlParameter pMemoryPersonId = new() { ParameterName = "@memoryPersonId", SqlDbType = SqlDbType.Int, Value = command.MemoryPersonId };
-                SqlParameter pIsMain = new() { ParameterName = "@isMain", SqlDbType = SqlDbType.VarChar, Value = "" };
+                SqlParameter pIsMain = new() { ParameterName = "@isMain", SqlDbType = SqlDbType.VarChar, Value = command.IsMain };
                 SqlParameter pFileServer = new() { ParameterName = "@fileServer", SqlDbType = SqlDbType.VarChar, Value = command.FileServer };
                 SqlParameter pOption = new() { ParameterName = "@option", SqlDbType = SqlDbType.VarChar, Value = command.Option };
                 SqlParameter pUserRegister = new() { ParameterName = "@userRegister", SqlDbType = SqlDbType.VarChar, Value = command.UserRegister };
