@@ -145,7 +145,7 @@ namespace Catalog.Api.Controllers
                     //string urlPdf = _urlWeb + encriptado;
                     string urlPdf = _urlWeb;
                     GenerarArchivoQR doc = new GenerarArchivoQR(_saveArchivoQR, routeRoot);
-                    var respAdjunto = doc.GenerarArchivo(urlPdf, _defaultConnection);
+                    var respAdjunto = doc.GenerarArchivo(urlPdf, command.Name + " " + command.LastName, command.BirthDate + " - " + command.DeathDate, _defaultConnection);
                     if (!respAdjunto.Status)
                     {
                         resp.Message = respAdjunto.Message;
@@ -204,7 +204,7 @@ namespace Catalog.Api.Controllers
                                 </tr>
                                 <tr>
                                     <td colspan = '3'>
-                                        <p style = 'text-align:justify'> " + "Por lo tanto, se le envía el pdf adjunto del Codigo QR generado y el link de la web" +
+                                        <p style = 'text-align:justify'> " + "Por lo tanto, se le envía el pdf adjunto del Codigo QR generado y el link de la web  " +
                                                                     @"<a href ='" + modulo + @"' target='_BLANK'>Click aquí, para ver el registro.</a></p>
 									</td>
 								</tr> 
@@ -350,6 +350,23 @@ namespace Catalog.Api.Controllers
                 commandAttach.Option = option;
                 commandAttach.IsMain = isMain;
                 resp = await _mediator.Send(commandAttach);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = ex.Message;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
+            return resp;
+        }
+
+        [HttpPut("memoryPersonUpdate")]
+        public async Task<DataResponse> memoryPersonUpdate(MemoryPersonUpdateCommand command)
+        {
+            var resp = new DataResponse();
+            try
+            {
+                resp = await _mediator.Send(command);
             }
             catch (Exception ex)
             {

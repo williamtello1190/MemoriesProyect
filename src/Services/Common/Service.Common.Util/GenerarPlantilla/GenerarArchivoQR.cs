@@ -24,7 +24,7 @@ namespace Service.Common.Util.GenerarPlantilla
             _rutaServer = rutaServer;
         }
 
-        public DataResponse<BEFileResponse> GenerarArchivo(string urlPdf, string compilado)
+        public DataResponse<BEFileResponse> GenerarArchivo(string urlPdf, string nameMemories, string dateMemories, string compilado)
         {
             DataResponse<BEFileResponse> resp = new DataResponse<BEFileResponse>();
             var respAddFile = new DataResponse<BEFileResponse>();
@@ -46,7 +46,7 @@ namespace Service.Common.Util.GenerarPlantilla
                 rutaFile += fecha.Year.ToString() + "\\" + strMes + "\\" + strDia + "\\";
                 rutaDinamica += pathSavePDF + rutaFile;
                 pathSavePDF = _rutaServer + rutaDinamica + sNameGenPdf;
-                respAddFile = GenerarDocumentoQR(urlPdf);
+                respAddFile = GenerarDocumentoQR(urlPdf, nameMemories, dateMemories);
 
                 if (!Directory.Exists(_rutaServer + rutaDinamica))
                 {
@@ -87,7 +87,7 @@ namespace Service.Common.Util.GenerarPlantilla
 
         }
 
-        private DataResponse<BEFileResponse> GenerarDocumentoQR(string urlPdf)
+        private DataResponse<BEFileResponse> GenerarDocumentoQR(string urlPdf, string nameMemories, string dateMemories)
         {
             var resp = new DataResponse<BEFileResponse>();
 
@@ -116,9 +116,9 @@ namespace Service.Common.Util.GenerarPlantilla
 
                 cargarCodigoQR(document, payload);
 
-                content.SetFontAndSize(_baseFontBold, 12);
-                content.ShowTextAligned(Element.ALIGN_LEFT, "", 390, 723, 0);
-
+                content.SetFontAndSize(_baseFontBold, 24);
+                content.ShowTextAligned(Element.ALIGN_CENTER, nameMemories, 300, 750, 0);
+                content.ShowTextAligned(Element.ALIGN_CENTER, dateMemories, 290, 723, 0);
                 //foreach (DocumentoGeneradoConstanciaParametrosPDF item in parametros)
                 //{
                 //    string cadena = item.valor;
@@ -173,9 +173,9 @@ namespace Service.Common.Util.GenerarPlantilla
             iTextSharp.text.Image imagendemo;
 
             imagendemo = iTextSharp.text.Image.GetInstance(img, System.Drawing.Imaging.ImageFormat.Bmp);
-            imagendemo.SetAbsolutePosition(200, 200);//'Posicion en el eje cartesiano
-            imagendemo.ScaleAbsoluteWidth(200);//'Ancho de la imagen
-            imagendemo.ScaleAbsoluteHeight(200);// 'Altura de la imagen
+            imagendemo.SetAbsolutePosition(100, 250);//'Posicion en el eje cartesiano
+            imagendemo.ScaleAbsoluteWidth(400);//'Ancho de la imagen
+            imagendemo.ScaleAbsoluteHeight(450);// 'Altura de la imagen
             document.Add(imagendemo);//' Agrega la imagen al documento
 
         }
