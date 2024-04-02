@@ -23,3 +23,29 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Servi
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\refint\Catalog.Services.Queries.dll
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\ref\Catalog.Services.Queries.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Services.Queries.deps.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Services.Queries.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Services.Queries.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Domain.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Services.EventHandlers.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Collection.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Mapping.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Paging.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Mapping.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Paging.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Persistence.Database.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Services.EventHandlers.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Catalog.Domain.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\bin\Debug\net5.0\Service.Common.Collection.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.csproj.AssemblyReference.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.AssemblyInfoInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.AssemblyInfo.cs
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.csproj.CoreCompileInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.sourcelink.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog..852BC0B1.Up2Date
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\refint\Catalog.Services.Queries.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\Catalog.Services.Queries.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.Queries\obj\Debug\net5.0\ref\Catalog.Services.Queries.dll

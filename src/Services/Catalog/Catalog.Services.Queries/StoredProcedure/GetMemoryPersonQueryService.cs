@@ -42,7 +42,7 @@ namespace Catalog.Services.Queries.StoredProcedure
 
         public async Task<MemoryPersonDto> GetMemoryPersonByCodeQR(string CodeQR)
         {
-            SqlParameter pCodeQR = new() { ParameterName = "@CodeQR", SqlDbType = SqlDbType.Int, Value = CodeQR };
+            SqlParameter pCodeQR = new() { ParameterName = "@CodeQR", SqlDbType = SqlDbType.VarChar, Value = CodeQR };
             var collection = await _context.MemoryPerson.FromSqlRaw("EXEC [dbo].[uspGetMemoryPersonByCodeQR] @CodeQR", pCodeQR).ToListAsync();
             if (collection.Count > 0)
             {

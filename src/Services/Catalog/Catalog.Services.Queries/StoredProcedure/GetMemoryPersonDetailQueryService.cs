@@ -37,7 +37,7 @@ namespace Catalog.Services.Queries.StoredProcedure
 
         public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailByCodeQR(string CodeQR)
         {
-            SqlParameter pCodeQR = new() { ParameterName = "@CodeQR", SqlDbType = SqlDbType.Int, Value = CodeQR };
+            SqlParameter pCodeQR = new() { ParameterName = "@CodeQR", SqlDbType = SqlDbType.VarChar, Value = CodeQR };
             var collection = await _context.MemoryPersonDetail.FromSqlRaw("EXEC [dbo].[uspGetMemoryPersonDetailByCodeQR] @CodeQR", pCodeQR).ToListAsync();
 
             return collection.MapTo<List<MemoryPersonDetailDto>>();

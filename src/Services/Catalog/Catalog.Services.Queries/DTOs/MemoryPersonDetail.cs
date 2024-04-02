@@ -18,6 +18,6 @@ namespace Catalog.Services.Queries.DTOs
         public string Description { get; set; }
         public string IsMain { get; set; }
         public string Base64File { get; set; }
-        public string FilseServer { get; set; }
+        public string FileServer { get; set; }
     }
 }

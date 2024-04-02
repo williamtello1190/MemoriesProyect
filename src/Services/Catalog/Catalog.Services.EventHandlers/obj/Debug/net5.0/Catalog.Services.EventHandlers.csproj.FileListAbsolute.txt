@@ -17,3 +17,23 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Servi
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\refint\Catalog.Services.EventHandlers.dll
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\ref\Catalog.Services.EventHandlers.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Services.EventHandlers.deps.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Services.EventHandlers.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Services.EventHandlers.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Domain.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Service.Common.Collection.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Service.Common.Collection.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Persistence.Database.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\bin\Debug\net5.0\Catalog.Domain.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.csproj.AssemblyReference.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.AssemblyInfoInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.AssemblyInfo.cs
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.csproj.CoreCompileInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.sourcelink.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog..447FEEC5.Up2Date
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\refint\Catalog.Services.EventHandlers.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\Catalog.Services.EventHandlers.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Services.EventHandlers\obj\Debug\net5.0\ref\Catalog.Services.EventHandlers.dll
