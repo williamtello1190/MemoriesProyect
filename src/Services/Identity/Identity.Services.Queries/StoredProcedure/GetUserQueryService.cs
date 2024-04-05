@@ -27,7 +27,7 @@ namespace Identity.Services.Queries.StoredProcedure
 
         public async Task<UserDto> GetUser(string code, string password)
         {
-            SqlParameter pCode = new() { ParameterName = "@code", SqlDbType = SqlDbType.VarChar, Value = code };
+            SqlParameter pCode = new() { ParameterName = "@Code", SqlDbType = SqlDbType.VarChar, Value = code };
             SqlParameter pPassword = new() { ParameterName = "@Password", SqlDbType = SqlDbType.VarChar, Value = password };
             var collection = await _context.Users.FromSqlRaw("EXEC [dbo].[uspGetUser] @Code, @Password", pCode, pPassword).ToListAsync();
 

@@ -124,7 +124,8 @@ namespace Catalog.Api.Controllers
                         if (respSaveFile.Status)
                         {
                             doc.PhysicalName = respSaveFile.Data.FileName;
-                            doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
+                            //doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
+                            doc.FilePath = respSaveFile.Data.FileRuta;
                             doc.FileServer = filePathRoot;
                             doc.Option = "I";
                             lstdocAttachment.Add(doc);
@@ -218,12 +219,12 @@ namespace Catalog.Api.Controllers
                 #endregion
 
 
-                string logo = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fes%2Fpng-ipoql&psig=AOvVaw3BWGUqFbj-GrZZVk78ypDG&ust=1709254536494000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJCmn8Orz4QDFQAAAAAdAAAAABAE";
+                string logo = "https://dcassetcdn.com/design_img/3401269/726756/726756_18638460_3401269_7de38b77_image.jpg";
                 string body = @"
                             <center>
 								<table width='90%' style='font-family:calibri; margin:30px; color:#222;'>
 									<tr>
-										<td><img src='" + logo + @"'/></td>
+										<td><img src='" + logo + @"' width=200 heigth=50/></td>
 										<td></td>
 									</tr>
 									<tr>

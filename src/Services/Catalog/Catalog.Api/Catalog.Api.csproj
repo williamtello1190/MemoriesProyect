@@ -17,4 +17,9 @@
     <ProjectReference Include="..\Catalog.Services.Queries\Catalog.Services.Queries.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Files\Img\" />
+    <Folder Include="Files\Pdf\" />
+  </ItemGroup>
+
 </Project>
