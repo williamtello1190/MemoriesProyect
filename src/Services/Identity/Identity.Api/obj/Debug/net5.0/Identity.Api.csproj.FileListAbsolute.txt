@@ -90,3 +90,6 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\obj\Debug\net5.0\Identity.Api.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\obj\Debug\net5.0\Identity.Api.genruntimeconfig.cache
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\obj\Debug\net5.0\ref\Identity.Api.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\bin\Debug\net5.0\EPPlus.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\bin\Debug\net5.0\itextsharp.dll
+F:\Proyectos William\Memories\MemoriesProyect\src\Services\Identity\Identity.Api\bin\Debug\net5.0\Microsoft.IO.RecyclableMemoryStream.dll
