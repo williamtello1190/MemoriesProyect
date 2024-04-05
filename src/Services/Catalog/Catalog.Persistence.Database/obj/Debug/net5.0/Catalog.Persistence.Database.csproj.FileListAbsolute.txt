@@ -13,3 +13,19 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persi
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\refint\Catalog.Persistence.Database.dll
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\ref\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.deps.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Persistence.Database.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Domain.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\bin\Debug\net5.0\Catalog.Domain.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.csproj.AssemblyReference.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.AssemblyInfoInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.AssemblyInfo.cs
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.csproj.CoreCompileInputs.cache
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.sourcelink.json
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog..07745594.Up2Date
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\refint\Catalog.Persistence.Database.dll
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\Catalog.Persistence.Database.pdb
+C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Persistence.Database\obj\Debug\net5.0\ref\Catalog.Persistence.Database.dll

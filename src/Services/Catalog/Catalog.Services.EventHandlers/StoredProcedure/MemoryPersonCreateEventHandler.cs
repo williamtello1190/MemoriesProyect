@@ -44,7 +44,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pPassword = new() { ParameterName = "@password", SqlDbType = SqlDbType.VarChar, Value = command.User.Password };
                 SqlParameter pUserRegister = new() { ParameterName = "@userRegister", SqlDbType = SqlDbType.VarChar, Value = command.UserRegister };
                 SqlParameter oCodeUser = new() { ParameterName = "@codeUser", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterUser]  @nameUser, @lastNameUser, @documentNumber, @email, @userName, @password, userRegister, @codeUser OUTPUT", pNameUser, pLastNameUser, pDocumentNumber, pEmail, pUserName, pPassword, pUserRegister, oCodeUser);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterUser]  @nameUser, @lastNameUser, @documentNumber, @email, @userName, @password, @userRegister, @codeUser OUTPUT", pNameUser, pLastNameUser, pDocumentNumber, pEmail, pUserName, pPassword, pUserRegister, oCodeUser);
 
                 int respIdUser = string.IsNullOrWhiteSpace(oCodeUser.Value.ToString()) ? 0 : int.Parse(oCodeUser.Value.ToString());
                 if (respIdUser <= 0)

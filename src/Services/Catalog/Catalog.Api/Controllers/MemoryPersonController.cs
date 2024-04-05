@@ -88,7 +88,7 @@ namespace Catalog.Api.Controllers
                 resp = await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailByCodeQR(CodeQR);
                 if (resp.Count > 0)
                 {
-                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FilseServer + x.FilePath + x.PhysicalName)));
+                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName)));
                 }
             }
             catch (Exception ex)
@@ -112,6 +112,8 @@ namespace Catalog.Api.Controllers
             {
                 string filePathRoot = routeRoot;
                 filePath = _saveImageMemory;
+                command.BirthDate = string.IsNullOrEmpty(command.BirthDate) ? null : DateTime.Parse(command.BirthDate).ToString("dd/MM/yyyy");
+                command.DeathDate = string.IsNullOrEmpty(command.DeathDate) ? null : DateTime.Parse(command.DeathDate).ToString("dd/MM/yyyy");
                 List<MemoryPersonAttachmentCommand> lstdocAttachment = new List<MemoryPersonAttachmentCommand>();
                 if (command.Attachment != null && command.Attachment.Count > 0)
                 {
@@ -121,9 +123,8 @@ namespace Catalog.Api.Controllers
                         var respSaveFile = docSave.SaveDocument(doc.FileBase64, doc.Extension, _defaultConnection);
                         if (respSaveFile.Status)
                         {
-                            doc.FileName = respSaveFile.Data.FileName;
                             doc.PhysicalName = respSaveFile.Data.FileName;
-                            doc.FilePath = respSaveFile.Data.FileRuta;
+                            doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
                             doc.FileServer = filePathRoot;
                             doc.Option = "I";
                             lstdocAttachment.Add(doc);
@@ -142,8 +143,8 @@ namespace Catalog.Api.Controllers
                 if (result.IDbdGenerado > 0)
                 {
                     encriptado = funciones.Encriptar(result.IDbdGenerado.ToString());
-                    //string urlPdf = _urlWeb + encriptado;
-                    string urlPdf = _urlWeb;
+                    string urlPdf = _urlWeb + encriptado;
+                    //string urlPdf = _urlWeb;
                     GenerarArchivoQR doc = new GenerarArchivoQR(_saveArchivoQR, routeRoot);
                     var respAdjunto = doc.GenerarArchivo(urlPdf, command.Name + " " + command.LastName, command.BirthDate + " - " + command.DeathDate, _defaultConnection);
                     if (!respAdjunto.Status)

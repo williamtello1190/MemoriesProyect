@@ -35,7 +35,7 @@ namespace Identity.Api
                 options.AddPolicy("AllowOrigin",
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:8100")
+                    builder.WithOrigins("http://localhost:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .WithExposedHeaders("Access-Control-Allow-Origin", "*");
