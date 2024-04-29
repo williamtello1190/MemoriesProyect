@@ -55,6 +55,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 #endregion
 
                 #region memoria
+                SqlParameter pNumberDocument = new() { ParameterName = "@numberDocument", SqlDbType = SqlDbType.VarChar, Value = command.DocumentNumber };
                 SqlParameter pName = new() { ParameterName = "@name", SqlDbType = SqlDbType.VarChar, Value = command.Name };
                 SqlParameter pLastName = new() { ParameterName = "@lastName", SqlDbType = SqlDbType.VarChar, Value = command.LastName };
                 SqlParameter pBirthDate = new() { ParameterName = "@birthDate", SqlDbType = SqlDbType.VarChar, Value = command.BirthDate };
@@ -63,7 +64,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pUserId = new() { ParameterName = "@userId", SqlDbType = SqlDbType.Int, Value = respIdUser };
                 //SqlParameter pCodeQR = new() { ParameterName = "@codeQR", SqlDbType = SqlDbType.VarChar, Value = command.CodeQR };
                 SqlParameter oCode = new() { ParameterName = "@code", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterMemoryPerson] @name, @lastName, @birthDate, @deathDate, @description, @userId, @userRegister, @code OUTPUT", pName, pLastName, pBirthDate, pDeathDate, pDescription, pUserId, pUserRegister, oCode);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterMemoryPerson] @numberDocument, @name, @lastName, @birthDate, @deathDate, @description, @userId, @userRegister, @code OUTPUT", pNumberDocument, pName, pLastName, pBirthDate, pDeathDate, pDescription, pUserId, pUserRegister, oCode);
 
                 int respIdMemory = string.IsNullOrWhiteSpace(oCode.Value.ToString()) ? 0 : int.Parse(oCode.Value.ToString());
                 if (respIdMemory <= 0)

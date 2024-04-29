@@ -53,6 +53,8 @@ namespace Catalog.Api
             services.AddMediatR(Assembly.Load("Catalog.Services.EventHandlers"));
             services.AddTransient<IGetMemoryPersonQueryService, GetMemoryPersonQueryService>();
             services.AddTransient<IGetMemoryPersonDetailQueryService, GetMemoryPersonDetailQueryService>();
+            services.AddTransient<IGetMemoryPersonByUserIdQueryService, GetMemoryPersonByUserIdQueryService>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -15,6 +15,7 @@ namespace Catalog.Persistence.Database
         }
         public DbSet<MemoryPerson> MemoryPerson { get; set; }
         public DbSet<MemoryPersonDetail> MemoryPersonDetail { get; set; }
+        public DbSet<MemoryPersonByUserId> MemoryPersonByUserId { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,7 @@ namespace Catalog.Persistence.Database
         {
             modelBuilder.Entity<MemoryPerson>().HasNoKey();
             modelBuilder.Entity<MemoryPersonDetail>().HasNoKey();
+            modelBuilder.Entity<MemoryPersonByUserId>().HasNoKey();
         }
     }
 }

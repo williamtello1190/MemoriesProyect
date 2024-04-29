@@ -37,12 +37,14 @@ namespace Catalog.Api.Controllers
         private readonly string _host;
         private readonly int _port;
         private readonly string _urlWeb;
+        private readonly IGetMemoryPersonByUserIdQueryService _IGetMemoryPersonByUserIdQueryService;
         public MemoryPersonController(
           ILogger<MemoryPersonController> logger,
           IMediator mediator,
           IConfiguration configuration,
           IGetMemoryPersonQueryService IGetMemoryPersonQueryService,
-          IGetMemoryPersonDetailQueryService IGetMemoryPersonDetailQueryService
+          IGetMemoryPersonDetailQueryService IGetMemoryPersonDetailQueryService,
+          IGetMemoryPersonByUserIdQueryService IGetMemoryPersonByUserIdQueryService
           )
         {
             _logger = logger;
@@ -60,6 +62,7 @@ namespace Catalog.Api.Controllers
             _host = _configuration.GetSection("MailSettings").GetSection("Host").Value;
             _port = int.Parse(_configuration.GetSection("MailSettings").GetSection("Port").Value);
             _urlWeb = _configuration.GetSection("ConfigDocument").GetSection("UrlWeb").Value;
+            _IGetMemoryPersonByUserIdQueryService = IGetMemoryPersonByUserIdQueryService;
         }
 
         [HttpGet("memoryPersonById/{MemoryPersonId}")]
@@ -73,6 +76,7 @@ namespace Catalog.Api.Controllers
         {
             return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
         }
+
         [HttpGet("memoryPersonByCodeQR/{CodeQR}")]
         public async Task<MemoryPersonDto> GetMemoryPersonByCodeQR(string CodeQR)
         {
@@ -375,6 +379,25 @@ namespace Catalog.Api.Controllers
                 _logger.LogError(ex.Message + " " + ex.StackTrace);
                 resp.Message = ex.Message;
                 resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
+            return resp;
+        }
+
+        [HttpGet("memoryPersonDetailByUserId/{UserId}")]
+        public async Task<List<MemoryPersonByUserIdDto>> memoryPersonDetailByUserId(Int32 UserId)
+        {
+            var resp = new List<MemoryPersonByUserIdDto>();
+            try
+            {
+                resp = await _IGetMemoryPersonByUserIdQueryService.GetMemoryPersonByUserId(UserId);
+                if (resp.Count > 0)
+                {
+                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FilePath)));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
             }
             return resp;
         }
