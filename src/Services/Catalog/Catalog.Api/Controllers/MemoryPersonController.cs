@@ -128,6 +128,7 @@ namespace Catalog.Api.Controllers
                         if (respSaveFile.Status)
                         {
                             doc.PhysicalName = respSaveFile.Data.FileName;
+                            doc.FileName = respSaveFile.Data.FileName;
                             //doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
                             doc.FilePath = respSaveFile.Data.FileRuta;
                             doc.FileServer = filePathRoot;
@@ -143,6 +144,9 @@ namespace Catalog.Api.Controllers
                     }
                 }
 
+                //creamos el password
+                string passwordCreate = GenerarPassword();
+                command.User.Password = passwordCreate;
                 command.Attachment = lstdocAttachment;
                 var result = await _mediator.Send(command);
                 if (result.IDbdGenerado > 0)
@@ -165,7 +169,7 @@ namespace Catalog.Api.Controllers
                         return resp;
                     }
 
-                    var respEnvio = sendEmail(result.IDbdGenerado, command.User.Email, urlPdf, respAdjunto.Data.ByteFile, command.User.Name + " " + command.User.LastName, command.Name + " " + command.LastName);
+                    var respEnvio = sendEmail(result.IDbdGenerado, command.User.Email, urlPdf, respAdjunto.Data.ByteFile, command.User.Name + " " + command.User.LastName, command.Name + " " + command.LastName, command.User.UserName, command.User.Password);
 
                     resp.Message = "Guardado Correctamente - " + respEnvio.Message;
                     resp.Code = DataResponse.STATUS_CREADO;
@@ -183,7 +187,7 @@ namespace Catalog.Api.Controllers
             return resp;
         }
 
-        public DataResponse sendEmail(Int64 MemoryPersonId, string correo, string linkUrl, byte[] file, string nameRegister, string nameMemory)
+        public DataResponse sendEmail(Int64 MemoryPersonId, string correo, string linkUrl, byte[] file, string nameRegister, string nameMemory, string userName, string password)
         {
             DataResponse resp = new DataResponse();
             string titulo = string.Empty;
@@ -214,6 +218,14 @@ namespace Catalog.Api.Controllers
                                                                     @"<a href ='" + modulo + @"' target='_BLANK'>Click aquí, para ver el registro.</a></p>
 									</td>
 								</tr> 
+
+                                <tr>
+                                    <td colspan = '3'>
+                                        <p style = 'text-align:justify'> Su usuario y clave es la siguiente: " + @" </p>
+                                        <p style = 'text-align:justify'> Usuario : " + userName +@" </p>
+                                        <p style = 'text-align:justify'> Clave : " + password + @" </p>
+                                    </td>
+                                </tr>
                                 <tr>
 									<td colspan='3'> 
                                         <p style='text-align:justify'>Lima, " + fechaEnvioEmail + @"</p>
@@ -400,6 +412,25 @@ namespace Catalog.Api.Controllers
                 _logger.LogError(ex.Message);
             }
             return resp;
+        }
+
+        private string GenerarPassword()
+        {
+            char[] Abc;
+            Random Rnd = new Random();
+            System.Text.StringBuilder Sb = new System.Text.StringBuilder();
+
+            Abc = new char[]{
+            'a','b','b','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+            't','u','v','w','x','y','z',
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S',
+            'T','U','V','W','X','Y','Z'};
+
+            for (int i = 0; i < 6; i++)
+            {
+                Sb.Append(Abc[Rnd.Next(0, 27)]);
+            }
+            return Sb.ToString();
         }
     }
 }

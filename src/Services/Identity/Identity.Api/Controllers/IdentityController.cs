@@ -1,10 +1,14 @@
-﻿using Identity.Services.Queries.DTOs.RequestFilter;
+﻿using Identity.Services.EventHandlers.Commands.StoredProcedure;
+using Identity.Services.Queries.DTOs.RequestFilter;
 using Identity.Services.Queries.DTOs.StoredProcedure;
 using Identity.Services.Queries.StoredProcedure;
+using MediatR;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Service.Common.Collection;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -21,6 +25,8 @@ namespace Identity.Api.Controllers
         private readonly string _keyData;
         private IConfiguration _configuration { get; }
         private readonly IGetUserQueryService _IGetUserQueryService;
+        private readonly ILogger<IdentityController> _logger;
+        private readonly IMediator _mediator;
 
         public IdentityController(
           IConfiguration configuration,
@@ -59,6 +65,23 @@ namespace Identity.Api.Controllers
 
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        [HttpPut("updateUserLogin")]
+        public async Task<DataResponse> AttachmentUpdate(UserLoginUpdateCommand command)
+        {
+            var resp = new DataResponse();
+            try
+            {
+                resp = await _mediator.Send(command);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message + " " + ex.StackTrace);
+                resp.Message = ex.Message;
+                resp.Code = DataResponse.STATUS_EXCEPTION;
+            }
+            return resp;
         }
     }
 }
