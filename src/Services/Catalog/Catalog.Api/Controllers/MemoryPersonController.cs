@@ -139,14 +139,9 @@ namespace Catalog.Api.Controllers
                         if (respSaveFile.Status)
                         {
                             doc.PhysicalName = respSaveFile.Data.FileName;
-<<<<<<< HEAD
                             doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
                             //doc.FilePath = respSaveFile.Data.FileRuta;
-=======
                             doc.FileName = respSaveFile.Data.FileName;
-                            //doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
-                            doc.FilePath = respSaveFile.Data.FileRuta;
->>>>>>> fcf9b48517da0622a92bcb06b076ac6e4216c128
                             doc.FileServer = filePathRoot;
                             doc.Option = "I";
                             lstdocAttachment.Add(doc);

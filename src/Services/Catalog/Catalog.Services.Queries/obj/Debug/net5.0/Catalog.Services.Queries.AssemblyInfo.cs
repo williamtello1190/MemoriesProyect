@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Catalog.Services.Queries")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e77ce75d9f4ae8432018cfcb7ff0d5ccae3d677")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfe3c85560d9f21cbec79ad1e3c27895e1139bf6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Catalog.Services.Queries")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Catalog.Services.Queries")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
