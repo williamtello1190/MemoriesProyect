@@ -22,3 +22,15 @@ C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Domain
 C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\refint\Catalog.Domain.dll
 C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.pdb
 C:\Users\bvela\Downloads\new\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\ref\Catalog.Domain.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\bin\Debug\net5.0\Catalog.Domain.deps.json
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\bin\Debug\net5.0\Catalog.Domain.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\bin\Debug\net5.0\Catalog.Domain.pdb
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.AssemblyInfoInputs.cache
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.AssemblyInfo.cs
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.sourcelink.json
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\refint\Catalog.Domain.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\Catalog.Domain.pdb
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Services\Catalog\Catalog.Domain\obj\Debug\net5.0\ref\Catalog.Domain.dll

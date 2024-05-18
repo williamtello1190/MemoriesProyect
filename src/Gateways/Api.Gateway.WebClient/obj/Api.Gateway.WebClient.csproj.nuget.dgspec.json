@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj": {}
+    "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj": {}
   },
   "projects": {
-    "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj": {
+    "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj",
+        "projectUniqueName": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj",
         "projectName": "Api.Gateway.Models",
-        "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj",
-        "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\obj\\",
+        "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj",
+        "packagesPath": "C:\\Users\\bvela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bvela\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -49,7 +55,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -58,24 +65,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj": {
+    "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj",
+        "projectUniqueName": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj",
         "projectName": "Api.Gateway.Proxies",
-        "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj",
-        "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\obj\\",
+        "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj",
+        "packagesPath": "C:\\Users\\bvela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bvela\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -84,14 +91,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj": {
-                "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj"
+              "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj": {
+                "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Models\\Api.Gateway.Models.csproj"
               }
             }
           }
@@ -100,6 +108,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -121,7 +134,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -130,24 +144,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj": {
+    "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj",
+        "projectUniqueName": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj",
         "projectName": "Api.Gateway.WebClient",
-        "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj",
-        "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\obj\\",
+        "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\Api.Gateway.WebClient.csproj",
+        "packagesPath": "C:\\Users\\bvela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.WebClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bvela\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -156,17 +170,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj": {
-                "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj"
+              "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj": {
+                "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Gateways\\Api.Gateway.Proxies\\Api.Gateway.Proxies.csproj"
               },
-              "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj": {
-                "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj"
+              "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj": {
+                "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj"
               }
             }
           }
@@ -175,6 +190,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -196,7 +216,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -208,24 +229,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj": {
+    "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj",
+        "projectUniqueName": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj",
         "projectName": "Service.Common.Collection",
-        "projectPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj",
-        "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "F:\\Proyectos William\\Memories\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\obj\\",
+        "projectPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\Service.Common.Collection.csproj",
+        "packagesPath": "C:\\Users\\bvela\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bvela\\Downloads\\files\\backend\\MemoriesProyect\\src\\Services\\Common\\Service.Common.Collection\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bvela\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -234,6 +255,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -246,6 +268,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -257,7 +284,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -266,7 +294,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     }

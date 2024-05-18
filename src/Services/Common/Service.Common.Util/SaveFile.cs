@@ -37,7 +37,7 @@ namespace Service.Common.Util
                     Directory.CreateDirectory(rutaDinamica);
                 }
 
-                string sNameGenPdf = Guid.NewGuid().ToString("N") + "." + FileType;
+                string sNameGenPdf = Guid.NewGuid().ToString("N") + FileType;
                 string ambiente = ServerPath.Contains("/PRUEBAS") ? "pruebas_" : "";
                 sNameGenPdf = ambiente + sNameGenPdf;
                 pathSavePDF = rutaDinamica + sNameGenPdf;

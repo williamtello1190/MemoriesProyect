@@ -13,3 +13,19 @@ F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\o
 F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\refint\Api.Gateway.Proxies.dll
 F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.pdb
 F:\Proyectos William\Memories\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\ref\Api.Gateway.Proxies.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.deps.json
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Proxies.pdb
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Models.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\bin\Debug\net5.0\Api.Gateway.Models.pdb
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.csproj.AssemblyReference.cache
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.AssemblyInfoInputs.cache
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.AssemblyInfo.cs
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.csproj.CoreCompileInputs.cache
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.sourcelink.json
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gate.97CFDA84.Up2Date
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\refint\Api.Gateway.Proxies.dll
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\Api.Gateway.Proxies.pdb
+C:\Users\bvela\Downloads\files\backend\MemoriesProyect\src\Gateways\Api.Gateway.Proxies\obj\Debug\net5.0\ref\Api.Gateway.Proxies.dll

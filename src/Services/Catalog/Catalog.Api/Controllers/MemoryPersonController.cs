@@ -74,7 +74,20 @@ namespace Catalog.Api.Controllers
         [HttpGet("memoryPersonDetailById/{MemoryPersonId}")]
         public async Task<List<MemoryPersonDetailDto>> GetMemoryPersonDetailById(Int32 MemoryPersonId)
         {
-            return await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
+            var resp = new List<MemoryPersonDetailDto>();
+            try
+            {
+                resp = await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
+                if (resp.Count > 0)
+                {
+                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName)));
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return resp;
         }
 
         [HttpGet("memoryPersonByCodeQR/{CodeQR}")]
@@ -116,8 +129,6 @@ namespace Catalog.Api.Controllers
             {
                 string filePathRoot = routeRoot;
                 filePath = _saveImageMemory;
-                command.BirthDate = string.IsNullOrEmpty(command.BirthDate) ? null : DateTime.Parse(command.BirthDate).ToString("dd/MM/yyyy");
-                command.DeathDate = string.IsNullOrEmpty(command.DeathDate) ? null : DateTime.Parse(command.DeathDate).ToString("dd/MM/yyyy");
                 List<MemoryPersonAttachmentCommand> lstdocAttachment = new List<MemoryPersonAttachmentCommand>();
                 if (command.Attachment != null && command.Attachment.Count > 0)
                 {
@@ -128,8 +139,8 @@ namespace Catalog.Api.Controllers
                         if (respSaveFile.Status)
                         {
                             doc.PhysicalName = respSaveFile.Data.FileName;
-                            //doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
-                            doc.FilePath = respSaveFile.Data.FileRuta;
+                            doc.FilePath = respSaveFile.Data.FileRuta.Replace(filePathRoot, "");
+                            //doc.FilePath = respSaveFile.Data.FileRuta;
                             doc.FileServer = filePathRoot;
                             doc.Option = "I";
                             lstdocAttachment.Add(doc);
