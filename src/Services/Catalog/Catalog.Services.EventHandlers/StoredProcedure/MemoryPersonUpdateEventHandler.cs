@@ -40,7 +40,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pBirthDate = new() { ParameterName = "@birthDate", SqlDbType = SqlDbType.VarChar, Value = command.BirthDate };
                 SqlParameter pDeathDate = new() { ParameterName = "@deathDate", SqlDbType = SqlDbType.VarChar, Value = command.DeathDate };
                 SqlParameter pDescription = new() { ParameterName = "@description", SqlDbType = SqlDbType.VarChar, Value = command.Description };
-                SqlParameter pUser = new() { ParameterName = "@user", SqlDbType = SqlDbType.Int, Value = command.User };
+                SqlParameter pUser = new() { ParameterName = "@user", SqlDbType = SqlDbType.VarChar, Value = command.User };
                 SqlParameter oCode = new() { ParameterName = "@code", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
                 await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspUpdateMemoryPerson] @memoryPersonId, @name, @lastName, @birthDate, @deathDate, @description, @user, @code OUTPUT", pMemoryPersonId, pName, pLastName, pBirthDate, pDeathDate, pDescription, pUser, oCode);
 

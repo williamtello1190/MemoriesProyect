@@ -50,7 +50,7 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 int respIdAttachment = string.IsNullOrWhiteSpace(oCodeAttach.Value.ToString()) ? 0 : int.Parse(oCodeAttach.Value.ToString());
                 if (respIdAttachment <= 0)
                 {
-                    await transaction.CommitAsync();
+                    await transaction.RollbackAsync();
                     return messageError("No se grabo el adjunto");
                 }
 

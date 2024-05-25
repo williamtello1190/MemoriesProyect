@@ -38,12 +38,12 @@ namespace Catalog.Services.EventHandlers.StoredProcedure
                 SqlParameter pMemoryPersonId = new() { ParameterName = "@attachmentId", SqlDbType = SqlDbType.Int, Value = command.AttachmentId };
                 SqlParameter pUser = new() { ParameterName = "@user", SqlDbType = SqlDbType.VarChar, Value = command.User };
                 SqlParameter oCodeAttach = new() { ParameterName = "@codeAttach", SqlDbType = SqlDbType.Int, Direction = ParameterDirection.Output };
-                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspRegisterAttachment]  @memoryPersonIdDet, @attachmentId, @user, @codeAttach OUTPUT", pMemoryPersonIdDet, pMemoryPersonId, pUser, oCodeAttach);
+                await _context.Database.ExecuteSqlRawAsync("EXEC [dbo].[uspUpdateAttachment]  @memoryPersonIdDet, @attachmentId, @user, @codeAttach OUTPUT", pMemoryPersonIdDet, pMemoryPersonId, pUser, oCodeAttach);
 
                 int respIdAttachment = string.IsNullOrWhiteSpace(oCodeAttach.Value.ToString()) ? 0 : int.Parse(oCodeAttach.Value.ToString());
                 if (respIdAttachment <= 0)
                 {
-                    await transaction.CommitAsync();
+                    await transaction.RollbackAsync();
                     return messageError("No se Actualizó");
                 }
 

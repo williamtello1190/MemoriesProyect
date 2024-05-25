@@ -80,7 +80,13 @@ namespace Catalog.Api.Controllers
                 resp = await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailById(MemoryPersonId);
                 if (resp.Count > 0)
                 {
-                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName)));
+                    resp.ForEach(x =>
+                    {
+                        if (!string.IsNullOrEmpty(x.FileServer) && !string.IsNullOrEmpty(x.FilePath) && !string.IsNullOrEmpty(x.PhysicalName))
+                        {
+                            x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName));
+                        }
+                    });
                 }
             }
             catch (Exception ex)
@@ -105,7 +111,13 @@ namespace Catalog.Api.Controllers
                 resp = await _IGetMemoryPersonDetailQueryService.GetMemoryPersonDetailByCodeQR(CodeQR);
                 if (resp.Count > 0)
                 {
-                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName)));
+                    resp.ForEach(x =>
+                    {
+                        if (!string.IsNullOrEmpty(x.FileServer) && !string.IsNullOrEmpty(x.FilePath) && !string.IsNullOrEmpty(x.PhysicalName))
+                        {
+                            x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FileServer + x.FilePath + x.PhysicalName));
+                        }
+                    });
                 }
             }
             catch (Exception ex)
@@ -233,7 +245,7 @@ namespace Catalog.Api.Controllers
                                 <tr>
                                     <td colspan = '3'>
                                         <p style = 'text-align:justify'> Su usuario y clave es la siguiente: " + @" </p>
-                                        <p style = 'text-align:justify'> Usuario : " + userName +@" </p>
+                                        <p style = 'text-align:justify'> Usuario : " + userName + @" </p>
                                         <p style = 'text-align:justify'> Clave : " + password + @" </p>
                                     </td>
                                 </tr>
@@ -342,7 +354,7 @@ namespace Catalog.Api.Controllers
                     var respSaveFile = docSave.SaveDocument(doc.FileBase64, doc.Extension, _defaultConnection);
                     if (respSaveFile.Status)
                     {
-                        resp = await RegisterAttachment(respSaveFile, doc.MemoryPersonId, doc.UserRegister, doc.Extension, doc.Description, "I", string.Empty);
+                        resp = await RegisterAttachment(respSaveFile, doc.MemoryPersonId, doc.UserRegister, doc.Extension, doc.Description, "I", doc.IsMain);
                     }
                     else
                     {
@@ -371,7 +383,7 @@ namespace Catalog.Api.Controllers
                 commandAttach.MemoryPersonId = id;
                 commandAttach.UserRegister = user;
                 commandAttach.FileName = request.Data.FileName;
-                commandAttach.FilePath = request.Data.FileRuta;
+                commandAttach.FilePath = request.Data.FileRuta.Replace(routeRoot, "");
                 commandAttach.PhysicalName = request.Data.FileName;
                 commandAttach.Extension = extension;
                 commandAttach.FileServer = routeRoot;
@@ -415,7 +427,13 @@ namespace Catalog.Api.Controllers
                 resp = await _IGetMemoryPersonByUserIdQueryService.GetMemoryPersonByUserId(UserId);
                 if (resp.Count > 0)
                 {
-                    resp.ForEach(x => x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FilePath)));
+                    resp.ForEach(x =>
+                    {
+                        if (!string.IsNullOrEmpty(x.FilePath))
+                        {
+                            x.Base64File = Convert.ToBase64String(System.IO.File.ReadAllBytes(x.FilePath));
+                        }
+                    });
                 }
             }
             catch (Exception ex)
